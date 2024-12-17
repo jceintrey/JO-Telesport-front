@@ -13,9 +13,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     CommonModule,
-    
     NgxChartsModule,
   ],
   providers: [],

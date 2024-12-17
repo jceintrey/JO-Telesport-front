@@ -20,50 +20,25 @@ export class HomeComponent implements OnInit {
   public countriesCount: number = 0;
   public joCount: number = 0;
 
-  pieChartData =  [
-    {
-      "name": "Germany",
-      "value": 40632,
-      "extra": {
-        "code": "de"
-      }
-    },
-    {
-      "name": "United States",
-      "value": 50000,
-      "extra": {
-        "code": "us"
-      }
-    },
-    {
-      "name": "France",
-      "value": 36745,
-      "extra": {
-        "code": "fr"
-      }
-    },
-    {
-      "name": "United Kingdom",
-      "value": 36240,
-      "extra": {
-        "code": "uk"
-      }
-    },
-    {
-      "name": "Spain",
-      "value": 33000,
-      "extra": {
-        "code": "es"
-      }
-    },
-    {
-      "name": "Italy",
-      "value": 35800,
-      "extra": {
-        "code": "it"
-      }
-    }
-  ];
+  public pieChartData: ChartData<'pie'> ={
+    labels: [],
+    datasets: [
+      {
+        data: [],
+        backgroundColor: [
+          '#9780A1',
+          '#89A1DB',
+          '#793D52',
+          '#956065',
+          '#B8CBE7',
+          '#BFE0F1',
+        ], // Exemple de couleurs pour les segments
+        hoverBackgroundColor: ['#04838F', '#6FF34F', '#4F6BFF', '#E0E0E0'],
+        borderWidth: 0,
+      },
+    ],
+  }
+   
 
  
 
@@ -75,6 +50,8 @@ export class HomeComponent implements OnInit {
     // Manipulation des données pour le graphique
     this.olympics$.subscribe((olympics) => {
       const medalCountByCountry = this.calculateMedalCounts(olympics);
+      this.pieChartData.labels = Object.keys(medalCountByCountry);
+      this.pieChartData.datasets[0].data = Object.values(medalCountByCountry);
       
 
       // Nombre de pays distincts
