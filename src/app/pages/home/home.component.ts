@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+
 import { Observable, of } from 'rxjs';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
@@ -7,6 +7,7 @@ import { Chart } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 import { Participation } from 'src/app/core/models/Participation';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   standalone: false,
@@ -19,52 +20,52 @@ export class HomeComponent implements OnInit {
   public countriesCount: number = 0;
   public joCount: number = 0;
 
-  public pieChartData: ChartData<'pie'> = {
-    labels: [],
-    datasets: [
-      {
-        data: [],
-        backgroundColor: [
-          '#9780A1',
-          '#89A1DB',
-          '#793D52',
-          '#956065',
-          '#B8CBE7',
-          '#BFE0F1',
-        ], // Exemple de couleurs pour les segments
-        hoverBackgroundColor: ['#04838F', '#6FF34F', '#4F6BFF', '#E0E0E0'],
-        borderWidth: 0,
-      },
-    ],
-  };
-  public pieChartType: ChartType = 'pie';
-
-  public pieChartOptions: ChartOptions = {
-    responsive: true,
-    plugins: {
-      datalabels: {
-        anchor: 'end', // Position des labels par rapport à chaque secteur
-        align: 'start', // Aligner les labels vers l'extérieur
-        color: '#000000', // Couleur du texte des labels
-        
-        font: {
-          size: 14, // Taille de la police
-          weight: 'bold', // Poids de la police
-        
-        },
-        formatter: (value, context) => {
-          const labels = context.chart.data.labels;
-          if (labels && labels[context.dataIndex]) {
-            const label = labels[context.dataIndex];
-            return `${label}: ${value}`; // Format personnalisé des labels
-          }
-          return value.toString();
-        },
-        display: true,
-       
-      },
+  pieChartData =  [
+    {
+      "name": "Germany",
+      "value": 40632,
+      "extra": {
+        "code": "de"
+      }
     },
-  };
+    {
+      "name": "United States",
+      "value": 50000,
+      "extra": {
+        "code": "us"
+      }
+    },
+    {
+      "name": "France",
+      "value": 36745,
+      "extra": {
+        "code": "fr"
+      }
+    },
+    {
+      "name": "United Kingdom",
+      "value": 36240,
+      "extra": {
+        "code": "uk"
+      }
+    },
+    {
+      "name": "Spain",
+      "value": 33000,
+      "extra": {
+        "code": "es"
+      }
+    },
+    {
+      "name": "Italy",
+      "value": 35800,
+      "extra": {
+        "code": "it"
+      }
+    }
+  ];
+
+ 
 
   constructor(private olympicService: OlympicService) {}
 
@@ -74,8 +75,7 @@ export class HomeComponent implements OnInit {
     // Manipulation des données pour le graphique
     this.olympics$.subscribe((olympics) => {
       const medalCountByCountry = this.calculateMedalCounts(olympics);
-      this.pieChartData.labels = Object.keys(medalCountByCountry);
-      this.pieChartData.datasets[0].data = Object.values(medalCountByCountry);
+      
 
       // Nombre de pays distincts
       this.countriesCount = this.calculateCountryCounts(olympics);

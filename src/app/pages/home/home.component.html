@@ -13,13 +13,18 @@
 </div>
 <div class="container-chart">
   <div class="pie-chart"> 
-    <canvas 
-      baseChart
-      [data]="pieChartData"
-      [options]="pieChartOptions"
-      [type]="pieChartType"
-    >
-    </canvas>
+    <ngx-charts-pie-chart
+    [view]="[700, 400]"                 
+            
+    [results]="pieChartData"            
+              
+ 
+    [labels]="true"                     
+    [doughnut]="false"                  
+    [explodeSlices]="false"             
+    [arcWidth]="0.25"                  
+    [gradient]="false">                 
+  </ngx-charts-pie-chart>
   </div>
 </div>
 
