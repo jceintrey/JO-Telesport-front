@@ -3,6 +3,7 @@ import { take } from 'rxjs';
 import { OlympicService } from './core/services/olympic.service';
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
