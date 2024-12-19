@@ -21,11 +21,34 @@ export class HomeComponent implements OnInit {
   public joCount: number = 0;
 
   public pieChartData: { name: string; value: number }[] = [];
-   
+  
+  public view: [number, number];
 
  
 
-  constructor(private olympicService: OlympicService) {}
+  onResize(event: { target: { innerWidth: number; }; }) {
+    console.log("largeur: " + innerWidth);
+    console.log("hauteur: " + innerHeight);
+
+    this.view = [event.target.innerWidth / 1.1, 400];
+ 
+    if (innerWidth < 400){
+      this.view = [innerWidth - 10, innerHeight -10];
+    }
+    console.log("view: " + this.view)
+}
+
+  constructor(private olympicService: OlympicService) {
+    console.log("largeur: " + innerWidth);
+
+console.log("hauteur: " + innerHeight);
+
+    this.view = [innerWidth / 1.1, 400];
+     
+    
+    console.log("view: " + this.view)
+  
+  }
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
@@ -41,6 +64,7 @@ export class HomeComponent implements OnInit {
         };
       });
 
+      
 
       // Nombre de pays distincts
       this.countriesCount = this.calculateCountryCounts(olympics);
@@ -50,6 +74,25 @@ export class HomeComponent implements OnInit {
       this.joCount = this.calculateJoCounts(olympics);
       console.log('Nombre de JO:', this.joCount);
     });
+  }
+
+ /**
+   * Gère l'évènement de click sur une part du PieChart
+   * @param data données de cliquées
+   * @returns void
+   */
+  onSelect(data: { name: string; value: number }): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+    console.log(data.name+" "+data.value);
+    alert(`Vous avez sélectionné : ${data.name} avec une valeur de ${data.value}`);
+  }
+
+  onActivate(data: any): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
+
+  onDeactivate(data: any): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
   /**

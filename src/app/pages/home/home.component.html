@@ -8,21 +8,31 @@
     <span class="label">Number of JOs</span><br /><strong>{{ joCount }}</strong>
   </div>
   <div class="card">
-        <span class="label">Number of Countries</span><br /><strong>{{ countriesCount }}</strong>
+    <span class="label">Number of countries</span><br /><strong>{{
+      countriesCount
+    }}</strong>
   </div>
 </div>
+
 <div class="container-chart">
-  <!-- <div class="pie-chart">  -->
+  <span #ContainerRef class="pie-chart">
     <ngx-charts-pie-chart
-    [view]="[700, 400]"                 
-    [results]="pieChartData"            
-    [labels]="true"                     
-    [doughnut]="false"                  
-    [explodeSlices]="false"             
-    [arcWidth]="0.05"                  
-    [gradient]="false">                 
-  </ngx-charts-pie-chart>
-  <!-- </div> -->
+      [results]="pieChartData"
+      [labels]="true"
+      [doughnut]="false"
+      [explodeSlices]="false"
+      [arcWidth]="0.05"
+      [gradient]="false"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)"
+    >
+      <ng-template #tooltipTemplate let-model="model" >
+        <div class="custom-tooltip">
+          {{ model.name }}<br>{{ model.value | number }}
+        </div>
+      </ng-template>
+      
+    </ngx-charts-pie-chart>
+  </span>
 </div>
-
-
