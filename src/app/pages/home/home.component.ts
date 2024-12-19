@@ -2,9 +2,7 @@
 import { Observable, of } from 'rxjs';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
-// import { ChartData, ChartOptions, ChartType } from 'chart.js';
-// import { Chart } from 'chart.js';
-// import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 
 import { Participation } from 'src/app/core/models/Participation';
 import { Component, OnInit } from '@angular/core';
@@ -22,31 +20,10 @@ export class HomeComponent implements OnInit {
 
   public pieChartData: { name: string; value: number }[] = [];
   
-  public view: [number, number];
-
  
-
-  onResize(event: { target: { innerWidth: number; }; }) {
-    console.log("largeur: " + innerWidth);
-    console.log("hauteur: " + innerHeight);
-
-    this.view = [event.target.innerWidth / 1.1, 400];
- 
-    if (innerWidth < 400){
-      this.view = [innerWidth - 10, innerHeight -10];
-    }
-    console.log("view: " + this.view)
-}
 
   constructor(private olympicService: OlympicService) {
-    console.log("largeur: " + innerWidth);
 
-console.log("hauteur: " + innerHeight);
-
-    this.view = [innerWidth / 1.1, 400];
-     
-    
-    console.log("view: " + this.view)
   
   }
 
@@ -77,21 +54,35 @@ console.log("hauteur: " + innerHeight);
   }
 
  /**
-   * Gère l'évènement de click sur une part du PieChart
-   * @param data données de cliquées
+   * Gère l'évènement de clicc sur une part du PieChart
+   * @param data données
    * @returns void
    */
   onSelect(data: { name: string; value: number }): void {
+
+    if (!data) {
+      console.warn('Aucune donnée reçue lors du clic.');
+      return;
+    }
+
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
     console.log(data.name+" "+data.value);
-    alert(`Vous avez sélectionné : ${data.name} avec une valeur de ${data.value}`);
   }
-
-  onActivate(data: any): void {
+  /**
+   * Gère l'évènement survol sur une part du PieChart
+   * @param data données
+   * @returns void
+   */
+  onActivate(data: { name: string; value: number }): void {
     console.log('Activate', JSON.parse(JSON.stringify(data)));
   }
 
-  onDeactivate(data: any): void {
+  /**
+   * Gère l'évènement fin du survol sur une part du PieChart
+   * @param data données
+   * @returns void
+   */
+  onDeactivate(data: { name: string; value: number }): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 

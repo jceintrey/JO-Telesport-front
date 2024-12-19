@@ -51,15 +51,9 @@
   align-self: flex-start; /* Aligne le composant au début du conteneur */
 }
 
-/* Écran très petit - smartphones (320px à 480px de largeur) */
-@media (max-width: 480px) {
-  .container-chart .pie-chart {
-    aspect-ratio: 18 / 9;
-    max-height: 90vh;
-  }
-}
 
-/* Petits écrans - smartphones larges (481px à 768px) */
+
+/* Taille Largeur 240->481 */
 @media (min-width: 240px) and (max-width: 481px) {
   .container-chart .pie-chart {
     aspect-ratio: 16 / 9;
@@ -73,7 +67,7 @@
   }
 }
 
-/* Petits écrans - smartphones larges (481px à 768px) */
+/* Taille Largeur 481->614 */
 @media (min-width: 481px) and (max-width: 614px) {
   .container-chart .pie-chart {
     aspect-ratio: 16 / 9;
@@ -87,7 +81,7 @@
   }
 }
 
-/* Petits écrans - smartphones larges (481px à 768px) */
+/* Taille Largeur 614->768 */
 @media (min-width: 614px) and (max-width: 768px) {
   .container-chart .pie-chart {
     aspect-ratio: 16 / 9;
@@ -100,7 +94,7 @@
     font-size: 25px;
   }
 }
-/* Petits écrans - smartphones larges (481px à 768px) */
+/* Taille Largeur 769->900 */
 @media (min-width: 769px) and (max-width: 900px) {
   .container-chart .pie-chart {
     aspect-ratio: 16 / 9;
@@ -114,8 +108,8 @@
   }
 }
 
-/* Tablettes portrait (769px à 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
+/* Taille Largeur 900->1024 */
+@media (min-width: 900px) and (max-width: 1024px) {
   .container-chart .pie-chart {
     aspect-ratio: 5 / 4;
     max-height: 85vh;
@@ -128,7 +122,7 @@
   }
 }
 
-/* Ordinateurs et écrans plus larges */
+/* Taille Largeur >1024 */
 @media (min-width: 1025px) {
   .container-chart .pie-chart {
     aspect-ratio: 3 / 2;
@@ -143,8 +137,8 @@
 }
 
 
+/*Customisation du tooltip à revoir*/
 .custom-tooltip {
- // display: line;
   color: white;
   
   margin: auto;
