@@ -30,77 +30,64 @@ export class DetailsComponent {
     });
     this.olympics$.subscribe((olympic) => {
       //this.toConsole(olympic);
-      this.calculateMedalCountsForCountry(olympic,this.name);
-      this.calculateAthleteCountsForCountry(olympic,this.name);
 
+      this.calculateCountsForCountry(olympic,this.name,"participations");
     });
   }
 
 
-  /**
-   * Calcule le total des médailles remportées pour un pays donné
-   * @param olympics Liste des données olympiques, le pays
-   * @returns number le nombre total de médailles
+
+
+
+
+     /**
+   * Calcule le total d'athlètes ou médailles ou participations pour un pays donné
+   * La fonction est factorisée car le code pour retourner le nombre de médailles, ou d'athlètes et simmilaire
+   * Le calcul du nombre de participation est écrit de cette façon au lieu d'un size sur le tableau pour rester dans la même logique
+   * @param olympics Liste des données olympiques
+   * @param country le pays
+   * @param type le type de total
+   * @returns number le nombre total
    */
 
-  private calculateMedalCountsForCountry(olympics: Olympic[], country: string): number {
-   // recherche des données olympiques du pays
-    const countryData = olympics.find((olympic)=>(olympic.country == country));
-
-     // initialisation du compteur
-   let  totalMedals = 0;
-
-    if (!countryData){
-      console.log(`Pays ${country} non trouvé`);
-      
-    }
-    else {
-      countryData.participations.forEach((participation) => {
-        console.log(`${participation.city} | ${participation.year}`);
-        totalMedals+=participation.medalsCount;
-      });
-    
-    console.log("Nombre total de médailles: " + totalMedals);
-
-    }
-   
-
-   
-    return totalMedals;
-  }
-
-
-  
-  /**
-   * Calcule le total d'athlètes pour un pays donné
-   * @param olympics Liste des données olympiques, le pays
-   * @returns number le nombre total d'athlètes
-   */
-
-  private calculateAthleteCountsForCountry(olympics: Olympic[], country: string): number {
+  private calculateCountsForCountry(olympics: Olympic[], country: string, type: "athletes" | "medals" | "participations"): number {
     // recherche des données olympiques du pays
      const countryData = olympics.find((olympic)=>(olympic.country == country));
  
       // initialisation du compteur
-    let  totalAthletes = 0;
+    let  total = 0;
  
      if (!countryData){
        console.log(`Pays ${country} non trouvé`);
        
      }
      else {
+      
+      // itération sur les participations du pays
        countryData.participations.forEach((participation) => {
-         console.log(`${participation.city} | ${participation.year}`);
-         totalAthletes+=participation.athleteCount;
+
+        // calcul du total en fonction du type
+        switch(type){
+          case 'athletes':
+            total+=participation.athleteCount;
+            break;
+            case 'medals':
+            total+=participation.medalsCount;
+            break;
+            case 'participations':
+              total++;
+              break;
+        }
+         
        });
      
-     console.log("Nombre total d'athletes: " + totalAthletes);
+     console.log(`Nombre total de ${type} est ${total}`);
  
      }
     
  
     
-     return totalAthletes;
+     return total;
    }
 
   toConsole(olympics: Olympic[]): void {
