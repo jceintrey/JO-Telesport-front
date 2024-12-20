@@ -23,8 +23,6 @@ export class HomeComponent implements OnInit {
  
 
   constructor(private olympicService: OlympicService, private router: Router, private logger: NGXLogger) {
- 
-
   
   }
 
