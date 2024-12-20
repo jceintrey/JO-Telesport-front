@@ -2,8 +2,7 @@
 import { Observable, of } from 'rxjs';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
-
-
+import { NGXLogger } from 'ngx-logger';
 import { Participation } from 'src/app/core/models/Participation';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -23,12 +22,17 @@ export class HomeComponent implements OnInit {
   
  
 
-  constructor(private olympicService: OlympicService, private router: Router) {
+  constructor(private olympicService: OlympicService, private router: Router, private logger: NGXLogger) {
+ 
 
   
   }
 
   ngOnInit(): void {
+    this.logger.debug('Debug message');
+    this.logger.info('Informational message');
+    this.logger.error('Error message');
+    this.logger.warn('Warning message');
     this.olympics$ = this.olympicService.getOlympics();
     
     // Manipulation des données pour le graphique
