@@ -29,37 +29,79 @@ export class DetailsComponent {
       this.value = +params['value']; // Conversion en number
     });
     this.olympics$.subscribe((olympic) => {
-      this.toConsole(olympic);
+      //this.toConsole(olympic);
+      this.calculateMedalCountsForCountry(olympic,this.name);
+      this.calculateAthleteCountsForCountry(olympic,this.name);
+
     });
   }
 
 
   /**
-   * Calcule le total des médailles remportées pour chaque pays.
-   * @param olympics Liste des données olympiques.
-   * @returns objet avec les pays en clé et le nombre total de médailles en valeur.
+   * Calcule le total des médailles remportées pour un pays donné
+   * @param olympics Liste des données olympiques, le pays
+   * @returns number le nombre total de médailles
    */
 
-  private calculateMedalCounts(olympics: Olympic[]): {
-    [country: string]: number;
-  } {
-    const medalCountByCountry: { [country: string]: number } = {};
+  private calculateMedalCountsForCountry(olympics: Olympic[], country: string): number {
+   // recherche des données olympiques du pays
+    const countryData = olympics.find((olympic)=>(olympic.country == country));
 
-    olympics.forEach((olympic) => {
-      olympic.participations.forEach((participation) => {
-        const country = olympic.country;
-        const medals = participation.medalsCount;
+     // initialisation du compteur
+   let  totalMedals = 0;
 
-        // Ajout des médailles au pays
-        if (!medalCountByCountry[country]) {
-          medalCountByCountry[country] = 0;
-        }
-        medalCountByCountry[country] += medals;
+    if (!countryData){
+      console.log(`Pays ${country} non trouvé`);
+      
+    }
+    else {
+      countryData.participations.forEach((participation) => {
+        console.log(`${participation.city} | ${participation.year}`);
+        totalMedals+=participation.medalsCount;
       });
-    });
     
-    return medalCountByCountry;
+    console.log("Nombre total de médailles: " + totalMedals);
+
+    }
+   
+
+   
+    return totalMedals;
   }
+
+
+  
+  /**
+   * Calcule le total d'athlètes pour un pays donné
+   * @param olympics Liste des données olympiques, le pays
+   * @returns number le nombre total d'athlètes
+   */
+
+  private calculateAthleteCountsForCountry(olympics: Olympic[], country: string): number {
+    // recherche des données olympiques du pays
+     const countryData = olympics.find((olympic)=>(olympic.country == country));
+ 
+      // initialisation du compteur
+    let  totalAthletes = 0;
+ 
+     if (!countryData){
+       console.log(`Pays ${country} non trouvé`);
+       
+     }
+     else {
+       countryData.participations.forEach((participation) => {
+         console.log(`${participation.city} | ${participation.year}`);
+         totalAthletes+=participation.athleteCount;
+       });
+     
+     console.log("Nombre total d'athletes: " + totalAthletes);
+ 
+     }
+    
+ 
+    
+     return totalAthletes;
+   }
 
   toConsole(olympics: Olympic[]): void {
     olympics.forEach((olympic) => {
