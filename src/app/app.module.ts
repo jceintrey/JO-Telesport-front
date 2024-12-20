@@ -9,9 +9,11 @@ import { CommonModule } from '@angular/common';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxLoggerLevel, LoggerModule } from 'ngx-logger';
+import { DetailsComponent } from './pages/details/details.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent, DetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,6 +21,12 @@ import { HttpClientModule } from '@angular/common/http';
     NgxChartsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    // autres modules
+    LoggerModule.forRoot({
+      level: NgxLoggerLevel.DEBUG,  // Différents niveaux de log ici (TRACE, DEBUG, INFO, WARN, ERROR, FATAL)
+     // serverLogLevel: NgxLoggerLevel.ERROR,
+      // serverLoggingUrl: 'http://localhost:8080' // Serveur NXlog
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
+
 @Component({
   selector: 'app-details',
   standalone: false,
@@ -18,7 +19,8 @@ export class DetailsComponent {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private olympicService: OlympicService
+    private olympicService: OlympicService,
+
   ) {
     this.olympics$ = olympicService.getOlympics();
   }
