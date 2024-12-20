@@ -9,15 +9,18 @@ import { CommonModule } from '@angular/common';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
+import { DetailsComponent } from './pages/details/details.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent, DetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     NgxChartsModule,
     BrowserAnimationsModule,
+    RouterLink,
     HttpClientModule,
   ],
   providers: [],

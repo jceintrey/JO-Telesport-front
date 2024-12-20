@@ -33,6 +33,34 @@ export class DetailsComponent {
     });
   }
 
+
+  /**
+   * Calcule le total des médailles remportées pour chaque pays.
+   * @param olympics Liste des données olympiques.
+   * @returns objet avec les pays en clé et le nombre total de médailles en valeur.
+   */
+
+  private calculateMedalCounts(olympics: Olympic[]): {
+    [country: string]: number;
+  } {
+    const medalCountByCountry: { [country: string]: number } = {};
+
+    olympics.forEach((olympic) => {
+      olympic.participations.forEach((participation) => {
+        const country = olympic.country;
+        const medals = participation.medalsCount;
+
+        // Ajout des médailles au pays
+        if (!medalCountByCountry[country]) {
+          medalCountByCountry[country] = 0;
+        }
+        medalCountByCountry[country] += medals;
+      });
+    });
+    
+    return medalCountByCountry;
+  }
+
   toConsole(olympics: Olympic[]): void {
     olympics.forEach((olympic) => {
       console.log(

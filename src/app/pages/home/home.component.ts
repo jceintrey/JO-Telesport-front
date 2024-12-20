@@ -6,6 +6,7 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 
 import { Participation } from 'src/app/core/models/Participation';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: false,
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
   
  
 
-  constructor(private olympicService: OlympicService) {
+  constructor(private olympicService: OlympicService, private router: Router) {
 
   
   }
@@ -67,6 +68,8 @@ export class HomeComponent implements OnInit {
 
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
     console.log(data.name+" "+data.value);
+    this.router.navigate(['details'], { queryParams: { name: data.name, value: data.value } });
+
   }
   /**
    * Gère l'évènement survol sur une part du PieChart
