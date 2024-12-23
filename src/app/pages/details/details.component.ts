@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { GraphData } from 'src/app/core/models/lineGraphInterfaces';
+import { Observable, Subscription } from 'rxjs';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
 import { NGXLogger } from 'ngx-logger';
+import { LineGraphData } from 'src/app/core/models/lineGraphData';
 
 
 @Component({
@@ -14,21 +14,23 @@ import { NGXLogger } from 'ngx-logger';
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit, OnDestroy {
+
   public olympics$: Observable<Olympic[]> = new Observable<Olympic[]>();
-  name!: string;
-  value!: number;
+  private subscription: Subscription = new Subscription();
+
+
+  country!: string;
   numberOfEntries !: number;
   numberOfMedals !: number;
   numberOfAthletes !: number;
-
+  countryNotFound: boolean = false;
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C']
   };
 
-  public data!: {};
-  public data2!: {};
+  public data!: LineGraphData[];
 
   constructor(
     private router: Router,
@@ -36,139 +38,67 @@ export class DetailsComponent {
     private olympicService: OlympicService,
     private logger: NGXLogger
 
-  ) {
-    this.olympics$ = olympicService.getOlympics();
-  }
+  ) {}
 
+
+  /*
+  * Code d'execution à l'initialisation du composant
+  */
   ngOnInit(): void {
+
+    this.olympics$ = this.olympicService.getOlympics();
+
+    /*
+    Récupération du paramètre passé
+    */
     this.route.queryParams.subscribe((params) => {
-      this.name = params['name'];
-      this.value = +params['value']; // Conversion en number
+      this.country = params['countryName'];
     });
 
-
-    
-    this.data2 = [
-      {
-        "name": "green",
-        "series": [
-          {
-            "name": "Aug",
-            "value": 14
-          },
-          {
-            "name": "Sep",
-            "value": 35
-          },
-          {
-            "name": "Oct",
-            "value": 4
-          },
-          {
-            "name": "Nov",
-            "value": 17
-          },
-          {
-            "name": "Dec",
-            "value": 14
-          },
-          {
-            "name": "Jan",
-            "value": 35
-          }
-        ]
-      },
-    
-      {
-        "name": "yellow",
-        "series": [
-          {
-            "name": "Aug",
-            "value": 364
-          },
-          {
-            "name": "Sep",
-            "value": 412
-          },
-          {
-            "name": "Oct",
-            "value": 437
-          },
-          {
-            "name": "Nov",
-            "value": 437
-          },
-          {
-            "name": "Dec",
-            "value": 364
-          },
-          {
-            "name": "Jan",
-            "value": 412
-          }
-        ]
-      },
-      {
-        "name": "red",
-        "series": [
-          {
-            "name": "Aug",
-            "value": 168
-          },
-          {
-            "name": "Sep",
-            "value": 343
-          },
-          {
-            "name": "Oct",
-            "value": 512
-          },
-          {
-            "name": "Nov",
-            "value": 291
-          },
-          {
-            "name": "Dec",
-            "value": 168
-          },
-          {
-            "name": "Jan",
-            "value": 343
-          },
-        ]
+    /*
+    Souscription: abonnement à l'observable Olympics et construction des données graphiques
+    */
+    this.subscription = this.olympics$.subscribe((olympic) => {
+     
+      // On verifie si le country existe
+      if (!this.olympicService.countryExist(olympic,this.country)){
+        this.logger.error(`Le pays demandé \'${this.country}\' n'existe pas`);
+        this.countryNotFound = true; 
+        return;
       }
-    ];
-    
 
-    this.olympics$.subscribe((olympic) => {
-      //this.toConsole(olympic);
-      this.data = [
-        {
-          name: "France",
-          series: [
-            { name: "2012", value: 35 },
-            { name: "2016", value: 45 },
-            { name: "2020", value: 33 }
-          ]
-        }
-      ]
-      this.data = this.buildData(olympic,this.name);
+      this.countryNotFound = false;
 
+      // construction du tableau de données pour le linegraph
+      this.data = this.buildData(olympic,this.country);
+      this.logger.debug("Data: " + this.data);
 
-      this.logger.debug("data:..");
-      this.logger.debug(this.data);
-
-      this.logger.debug("data2:..");
-      this.logger.debug(this.data2);
       // calcul des compteurs du nombre de participations, de médailles et d'athlètes pour le pays
-      this.numberOfEntries = this.calculateCountsForCountry(olympic,this.name,"participations");
-      this.numberOfMedals = this.calculateCountsForCountry(olympic,this.name,"medals");
-      this.numberOfAthletes = this.calculateCountsForCountry(olympic,this.name,"athletes");
+      this.numberOfEntries = this.olympicService.calculateCountsForCountry(olympic,this.country,"participations");
+      this.numberOfMedals = this.olympicService.calculateCountsForCountry(olympic,this.country,"medals");
+      this.numberOfAthletes = this.olympicService.calculateCountsForCountry(olympic,this.country,"athletes");
       
     });
   }
 
-  private buildData(olympics: Olympic[], country: string): GraphData[] {
+/*
+* Code d'execution en fin de vie du composant
+*/
+  ngOnDestroy(): void {
+    // Désabonnement de la souscription
+    this.logger.debug("Desctruction du composant");
+    this.subscription.unsubscribe();
+  }
+
+  /**
+   * Construit un tableau de LineGraphData
+   * La fonction est utilisée pour construire les données attendues par liengraph de ngx-charts
+   * @param olympics Liste des données olympiques
+   * @param country le pays
+   * @returns LineGraphData[]
+   */
+
+  private buildData(olympics: Olympic[], country: string): LineGraphData[] {
     const countryData = olympics.find((olympic) => olympic.country === country);
   
     if (!countryData) {
@@ -176,7 +106,7 @@ export class DetailsComponent {
       return [];
     }
   
-    const graphItem: GraphData = {
+    const graphItem: LineGraphData = {
       name: country, // Nom du pays
       series: countryData.participations.map((participation) => ({
         name: participation.year.toString(), // Convertir l'année en string
@@ -188,72 +118,4 @@ export class DetailsComponent {
   }
   
     
-
-
-
-
-     /**
-   * Calcule le total d'athlètes ou médailles ou participations pour un pays donné
-   * La fonction est factorisée car le code pour retourner le nombre de médailles, ou d'athlètes et simmilaire
-   * Le calcul du nombre de participation est écrit de cette façon au lieu d'un size sur le tableau pour rester dans la même logique
-   * @param olympics Liste des données olympiques
-   * @param country le pays
-   * @param type le type de total
-   * @returns number le nombre total
-   */
-
-  private calculateCountsForCountry(olympics: Olympic[], country: string, type: "athletes" | "medals" | "participations"): number {
-    // recherche des données olympiques du pays
-     const countryData = olympics.find((olympic)=>(olympic.country == country));
- 
-      // initialisation du compteur
-    let  total = 0;
- 
-     if (!countryData){
-       console.log(`Pays ${country} non trouvé`);
-       
-     }
-     else {
-      
-      // itération sur les participations du pays
-       countryData.participations.forEach((participation) => {
-
-        // calcul du total en fonction du type
-        switch(type){
-          case 'athletes':
-            total+=participation.athleteCount;
-            break;
-            case 'medals':
-            total+=participation.medalsCount;
-            break;
-            case 'participations':
-              total++;
-              break;
-        }
-         
-       });
-     
-     console.log(`Nombre total de ${type} est ${total}`);
- 
-     }
-    
- 
-    
-     return total;
-   }
-
-  toConsole(olympics: Olympic[]): void {
-    olympics.forEach((olympic) => {
-      console.log(
-        'Id:' +
-          olympic.id +
-          ' Pays: ' +
-          olympic.country +
-          ' Participations:' +
-          olympic.participations.forEach((participation) => {
-            console.log(participation.city);
-          })
-      );
-    });
-  }
 }
