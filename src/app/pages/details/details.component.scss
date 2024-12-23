@@ -1,0 +1,27 @@
+/*
+* ----------------------------------------
+* Styles pour la partie graphique
+* ----------------------------------------
+*/
+
+.container-chart .line-chart {
+  display: flex;
+  justify-content: center; /* Centre horizontalement dans le conteneur container-chart */
+  align-items: flex-start; /* Centre verticalement dans le conteneur container-chart */
+  width: 50%;
+  max-height: 50%; /* Limite à 50% du container container-chart en hauteur */
+  max-width: 80%; /* Limite à 80% du container container-chart en largeur */
+}
+
+
+/*
+* ----------------------------------------
+* Media queries pour gérer les spécificités des écrans
+* Surcharge des media queries définis dans styles.scss
+* ----------------------------------------
+*/
+@media (orientation: portrait) {
+  .container-chart .line-chart {
+    width: 90%;
+  }
+}

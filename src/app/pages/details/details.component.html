@@ -1,4 +1,53 @@
+<div *ngIf="countryNotFound">
+    <div class="top">
+        <div class="buton"><a routerLink="" >Retour au dashboard</a></div>
+    </div>
+    <div class="error-container">
+        <div class="error-message">
+            <img src="assets/error.png" alt="Error Logo" class="error-logo">
+            <p>Le pays '{{ country }}' n'existe pas dans les données olympiques.</p>
+          </div>
+    </div> 
 
-<a routerLink="">Home</a>
-<p>Name: {{ name }}</p>
-    <p>Value: {{ value }}</p>
+</div>
+
+<div *ngIf="!countryNotFound">
+  <div class="top">
+    <div class="buton"><a routerLink="">Retour au dashboard</a></div>
+    <span class="titre">{{ country }}</span>
+  </div>
+  <div class="container-card">
+    <div class="card">
+      <span class="label">Number of Entries</span><br /><strong>{{
+        numberOfEntries
+      }}</strong>
+    </div>
+    <div class="card">
+      <span class="label">Total medals</span><br /><strong>{{
+        numberOfMedals
+      }}</strong>
+    </div>
+    <div class="card">
+      <span class="label">Total athletes</span><br /><strong>{{
+        numberOfAthletes
+      }}</strong>
+    </div>
+  </div>
+
+  <div class="container-chart">
+    <div #ContainerRef class="line-chart">
+      <ngx-charts-line-chart
+        [customColors]="colorScheme"
+        [results]="data"
+        [xAxis]="true"
+        [yAxis]="true"
+        [autoScale]="true"
+        [legend]="false"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxisLabel]="'Dates'"
+      >
+      </ngx-charts-line-chart>
+    </div>
+  </div>
+</div>
