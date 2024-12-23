@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { GraphData } from 'src/app/core/models/lineGraphInterfaces';
 import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
+
+import { NGXLogger } from 'ngx-logger';
 
 
 @Component({
@@ -15,11 +18,23 @@ export class DetailsComponent {
   public olympics$: Observable<Olympic[]> = new Observable<Olympic[]>();
   name!: string;
   value!: number;
+  numberOfEntries !: number;
+  numberOfMedals !: number;
+  numberOfAthletes !: number;
+
+
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C']
+  };
+
+  public data!: {};
+  public data2!: {};
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private olympicService: OlympicService,
+    private logger: NGXLogger
 
   ) {
     this.olympics$ = olympicService.getOlympics();
@@ -30,14 +45,149 @@ export class DetailsComponent {
       this.name = params['name'];
       this.value = +params['value']; // Conversion en number
     });
+
+
+    
+    this.data2 = [
+      {
+        "name": "green",
+        "series": [
+          {
+            "name": "Aug",
+            "value": 14
+          },
+          {
+            "name": "Sep",
+            "value": 35
+          },
+          {
+            "name": "Oct",
+            "value": 4
+          },
+          {
+            "name": "Nov",
+            "value": 17
+          },
+          {
+            "name": "Dec",
+            "value": 14
+          },
+          {
+            "name": "Jan",
+            "value": 35
+          }
+        ]
+      },
+    
+      {
+        "name": "yellow",
+        "series": [
+          {
+            "name": "Aug",
+            "value": 364
+          },
+          {
+            "name": "Sep",
+            "value": 412
+          },
+          {
+            "name": "Oct",
+            "value": 437
+          },
+          {
+            "name": "Nov",
+            "value": 437
+          },
+          {
+            "name": "Dec",
+            "value": 364
+          },
+          {
+            "name": "Jan",
+            "value": 412
+          }
+        ]
+      },
+      {
+        "name": "red",
+        "series": [
+          {
+            "name": "Aug",
+            "value": 168
+          },
+          {
+            "name": "Sep",
+            "value": 343
+          },
+          {
+            "name": "Oct",
+            "value": 512
+          },
+          {
+            "name": "Nov",
+            "value": 291
+          },
+          {
+            "name": "Dec",
+            "value": 168
+          },
+          {
+            "name": "Jan",
+            "value": 343
+          },
+        ]
+      }
+    ];
+    
+
     this.olympics$.subscribe((olympic) => {
       //this.toConsole(olympic);
+      this.data = [
+        {
+          name: "France",
+          series: [
+            { name: "2012", value: 35 },
+            { name: "2016", value: 45 },
+            { name: "2020", value: 33 }
+          ]
+        }
+      ]
+      this.data = this.buildData(olympic,this.name);
 
-      this.calculateCountsForCountry(olympic,this.name,"participations");
+
+      this.logger.debug("data:..");
+      this.logger.debug(this.data);
+
+      this.logger.debug("data2:..");
+      this.logger.debug(this.data2);
+      // calcul des compteurs du nombre de participations, de médailles et d'athlètes pour le pays
+      this.numberOfEntries = this.calculateCountsForCountry(olympic,this.name,"participations");
+      this.numberOfMedals = this.calculateCountsForCountry(olympic,this.name,"medals");
+      this.numberOfAthletes = this.calculateCountsForCountry(olympic,this.name,"athletes");
+      
     });
   }
 
-
+  private buildData(olympics: Olympic[], country: string): GraphData[] {
+    const countryData = olympics.find((olympic) => olympic.country === country);
+  
+    if (!countryData) {
+      this.logger.warn(`Données pour le pays "${country}" non trouvées.`);
+      return [];
+    }
+  
+    const graphItem: GraphData = {
+      name: country, // Nom du pays
+      series: countryData.participations.map((participation) => ({
+        name: participation.year.toString(), // Convertir l'année en string
+        value: participation.medalsCount // Nombre de médailles
+      }))
+    };
+  
+    return [graphItem]; // Retourne un tableau avec un seul objet pour le pays
+  }
+  
+    
 
 
 

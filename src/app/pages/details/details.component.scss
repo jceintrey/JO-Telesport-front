@@ -1,0 +1,185 @@
+/*
+* ----------------------------------------
+* Espace d'entête contenant le titre
+* ----------------------------------------
+*/
+
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  position: relative;
+}
+
+.buton {
+  display: block;
+  border-radius: 10px;
+  align-self: flex-start;
+  background-color: rgb(121,61,82);
+  //max-height: 3vh;
+  padding: 1%;
+  margin: 1%;
+  color: white;
+  font-size: 1vw;
+  font-family: "Roboto", sans-serif;
+  position: absolute;
+  left: 2vw; 
+}
+.buton a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.buton a:visited,
+.buton a:hover,
+.buton a:active {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.chart-title {
+  display: block;
+  border-radius: 10px;
+  background-color: rgb(4, 131, 143);
+  max-height: 10vh;
+  padding: 1%;
+  margin: 1%;
+  color: white;
+  font-size: x-large;
+  font-family: "Roboto", sans-serif;
+}
+
+/*
+* ----------------------------------------
+* Espace contenant les cartes de chiffres clé
+* ----------------------------------------
+*/
+.container-card {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  max-height: 20vh;
+  font-family: "Roboto", sans-serif;
+}
+
+.container-card .card {
+  padding: 1%;
+  margin: 1%;
+  border: 2px solid rgb(4, 131, 143);
+  border-radius: 10px;
+  text-align: center;
+}
+.container-card .card .label {
+  opacity: 0.4;
+}
+
+/*
+* ----------------------------------------
+* Espace pour la partie graphique
+* ----------------------------------------
+*/
+.container-chart {
+  display: flex;
+  flex-direction: row; // on dispose les éléments en ligne
+  justify-content: center; // on aligne horizontalement les élements à l'intérieur au centre
+  align-items: flex-start; // on aligne verticalement les éléments à l'intérieur en haut
+  margin: 1%; // marge extérieur à 1%
+  height: 70vh; // le container prend 70% de la taille de l'écran
+  max-width: 100vw; // Limite la largeur du container à 90% de la largeur de l'écran
+  max-height: 60vh; // Limite la hauteur du container à 60% de la hauteur de l'écran
+  overflow: auto; /* En cas de débordement, affiche une scrollbar, sinon elle reste masquée */
+}
+
+.container-chart .line-chart {
+  display: flex;
+  justify-content: center; /* Centre horizontalement dans le conteneur container-chart */
+  align-items: flex-start; /* Centre verticalement dans le conteneur container-chart */
+  //padding: 30px;
+  width: 50%;
+  max-height: 50%; /* Limite à 50% du container container-chart en hauteur */
+  max-width: 80%; /* Limite à 80% du container container-chart en largeur */
+}
+
+/*
+* ----------------------------------------
+* Media queries pour gérer les spécificités des écrans
+* 3 models : smartphones, tablettes, et grand écran avec dans chaque mode une adaptation en fonction du mode portrait ou paysage
+* ----------------------------------------
+*/
+
+/* Smartphones */
+@media screen and (max-width: 480px) {
+  /* Mode Portrait */
+  @media (orientation: portrait) {
+    .chart-title {
+      font-size: 6vw;
+    }
+    .container-card {
+      font-size: 3vw;
+    }
+    .container-chart .line-chart {
+      width: 90%;
+    }
+  }
+
+  /* Mode Paysage */
+  @media (orientation: landscape) {
+    .chart-title {
+      font-size: 6vh;
+    }
+    .container-card {
+      font-size: 3vh;
+    }
+  }
+}
+
+/* Tablettes */
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  /* Mode Portrait */
+  @media (orientation: portrait) {
+    .chart-title {
+      font-size: 6vw;
+    }
+    .container-card {
+      font-size: 3vw;
+    }
+    .container-chart .line-chart {
+      width: 90%;
+    }
+  }
+  /* Mode Paysage */
+  @media (orientation: landscape) {
+    .chart-title {
+      font-size: 6vh;
+    }
+    .container-card {
+      font-size: 3vh;
+    }
+  }
+}
+/* Grand écran */
+@media (min-width: 1025px) {
+  /* Mode Portrait */
+  @media (orientation: portrait) {
+    .chart-title {
+      font-size: 6vw;
+    }
+    .container-card {
+      font-size: 3vw;
+    }
+    .container-chart .line-chart {
+      width: 90%;
+    }
+  }
+  /* Mode Paysage */
+  @media (orientation: landscape) {
+    .chart-title {
+      font-size: 6vh;
+    }
+    .container-card {
+      font-size: 3vh;
+    }
+  }
+}
