@@ -11,7 +11,9 @@
   width: 100%; /* Utilise toute la largeur disponible */
   align-self: flex-start; /* Aligne le composant au début du conteneur */
 }
-
+::ng-deep .pie-label {
+  opacity: 0.6;
+}
 
 /*
 * ----------------------------------------
@@ -23,19 +25,17 @@
   .container-chart .pie-chart {
     height: 90%;
   }
+  //adaptation de la taille du label
+  ::ng-deep .pie-label {
+    font-size: 2vw !important;
+   
+  }
+  
 }
 
-
-/*Customisation du tooltip à revoir*/
-.custom-tooltip {
-  color: white;
-  
-  margin: auto;
-  padding: 0px;
-  border-radius: 10px;
-  font-size: 12px;
-  font-size: x-large;
-  font-family: "Roboto", sans-serif;
-  background-color: rgb(4, 131, 143);
-  
+@media (orientation: portrait) {
+    //adaptation de la taille du label
+  ::ng-deep .pie-label {
+    font-size: 2vh !important;
+  }
 }

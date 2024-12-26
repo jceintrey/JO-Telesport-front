@@ -5,7 +5,7 @@ import { Olympic } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
 import { NGXLogger } from 'ngx-logger';
-import { LineGraphData } from 'src/app/core/models/lineGraphData';
+import { LineGraphData } from 'src/app/core/models/LineGraphData';
 
 
 @Component({
