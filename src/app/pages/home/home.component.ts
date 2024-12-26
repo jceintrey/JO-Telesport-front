@@ -5,8 +5,10 @@ import { NGXLogger } from 'ngx-logger';
 import { Participation } from 'src/app/core/models/Participation';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LineGraphData } from 'src/app/core/models/lineGraphData';
+
 import { PieGraphData } from 'src/app/core/models/PieGraphData';
+import { Color, colorSets } from '@swimlane/ngx-charts';
+import { formatLabel, escapeLabel } from '@swimlane/ngx-charts';
 
 @Component({
   standalone: false,
@@ -22,6 +24,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public pieChartData: { name: string; value: number }[] = [];
   private subscription: Subscription = new Subscription();
+  colorScheme: any;
+  tooltipText: string | undefined;
 
   constructor(
     private olympicService: OlympicService,
@@ -35,6 +39,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
 
+    //this.colorScheme = colorSets.find((set: { name: string; }) => set.name === '');
+   
+    this.colorScheme = {
+      domain: ['#793D52', '#89A1DB', '#956065','#B8CBE7','#BFE0F1','#9780A1']
+    };
+    this.tooltipText="";
+    
     // Manipulation des données pour le graphique
     this.subscription = this.olympics$.subscribe((olympics) => {
       this.pieChartData = this.buildData(olympics);
@@ -98,6 +109,7 @@ export class HomeComponent implements OnInit, OnDestroy {
    */
   onActivate(data: { name: string; value: number }): void {
     console.log('Activate', JSON.parse(JSON.stringify(data)));
+    this.tooltipText = `Pays : ${data.name}, Valeur : ${data.value}`;
   }
 
   /**
@@ -107,5 +119,11 @@ export class HomeComponent implements OnInit, OnDestroy {
    */
   onDeactivate(data: { name: string; value: number }): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+    this.tooltipText = '';
   }
+
+
+
+ 
+
 }
