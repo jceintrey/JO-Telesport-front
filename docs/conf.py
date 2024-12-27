@@ -9,7 +9,8 @@
 project = 'JO-Telesport-front'
 copyright = '2024, jceintrey'
 author = 'jceintrey'
-release = '0.0.1'
+version = '1.0'  # La version principale
+release = '1.0.1'  # Version complète, avec patch/minor
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
