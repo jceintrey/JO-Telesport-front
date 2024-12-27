@@ -1,5 +1,13 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+<<<<<<< HEAD
+=======
+
+# Environnement virtuel
+venv/
+env/
+
+>>>>>>> 2e359bc (genereate rtd files with quickstart)
 # Compiled output
 /dist
 /tmp
@@ -37,6 +45,11 @@ yarn-error.log
 testem.log
 /typings
 
-# System files
+# System files et temporary
+*.pyc
+__pycache__/
 .DS_Store
 Thumbs.db
+
+#Fichiers de documentation construits via sphinx
+build/
