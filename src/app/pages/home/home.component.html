@@ -1,8 +1,6 @@
-<!-- <h2>Olympic games app</h2>
-<hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p> -->
-<!-- Pie chart -->
 <div class="top"><span class="titre">Medals per Country </span></div>
+
+<!-- Section avec les cartes -->
 
 <div class="container-card">
   <div class="card">
@@ -10,10 +8,12 @@
   </div>
   <div class="card">
     <span class="label">Number of countries</span><br /><strong>{{
-      countriesCount 
+      countriesCount
     }}</strong>
   </div>
 </div>
+
+<!-- Section graphique -->
 <div class="container-chart">
   <span #ContainerRef class="pie-chart">
     <ngx-charts-pie-chart
@@ -28,29 +28,13 @@
       (select)="onSelect($event)"
       (activate)="onActivate($event)"
       (deactivate)="onDeactivate($event)"
-    > 
-
-    <ng-template #tooltipTemplate let-model="model">
-  
-      <div class="ngx-charts-tooltip">
-          {{ model.name  }}<br>
+    >
+      <ng-template #tooltipTemplate let-model="model">
+        <div class="ngx-charts-tooltip">
+          {{ model.name }}<br />
           🏆{{ model.value }}
-      </div>
-  </ng-template> 
-
-
- </ngx-charts-pie-chart>
-<!--   <ngx-charts-advanced-pie-chart
-    [scheme]="colorScheme"
-    [results]="pieChartData"
-    [valueFormatting]="valueFormatting"
-    [gradient]="false"
-    [tooltipDisabled]="false"
-    [tooltipText]="pieTooltipText"
-    (select)="onSelect($event)"
-    (activate)="onActivate($event)"
-    (deactivate)="onDeactivate($event)"
-  >
-  </ngx-charts-advanced-pie-chart> -->
-   </span> 
+        </div>
+      </ng-template>
+    </ngx-charts-pie-chart>
+  </span>
 </div>

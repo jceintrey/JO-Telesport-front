@@ -1,14 +1,14 @@
+<!-- Gestion du cas pays non trouvé -->
 <div *ngIf="countryNotFound">
-    <div class="top">
-        <div class="buton"><a routerLink="" >Retour au dashboard</a></div>
+  <div class="top">
+    <div class="buton"><a routerLink="">Retour au dashboard</a></div>
+  </div>
+  <div class="error-container">
+    <div class="error-message">
+      <img src="assets/error.png" alt="Error Logo" class="error-logo" />
+      <p>Le pays '{{ country }}' n'existe pas dans les données olympiques.</p>
     </div>
-    <div class="error-container">
-        <div class="error-message">
-            <img src="assets/error.png" alt="Error Logo" class="error-logo">
-            <p>Le pays '{{ country }}' n'existe pas dans les données olympiques.</p>
-          </div>
-    </div> 
-
+  </div>
 </div>
 
 <div *ngIf="!countryNotFound">
@@ -16,6 +16,8 @@
     <div class="buton"><a routerLink="">Retour au dashboard</a></div>
     <span class="titre">{{ country }}</span>
   </div>
+
+  <!-- Section avec les cartes -->
   <div class="container-card">
     <div class="card">
       <span class="label">Number of Entries</span><br /><strong>{{
@@ -33,7 +35,8 @@
       }}</strong>
     </div>
   </div>
-
+  
+  <!-- Section graphique -->
   <div class="container-chart">
     <div #ContainerRef class="line-chart">
       <ngx-charts-line-chart
