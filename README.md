@@ -1,29 +1,80 @@
-# OlympicGamesStarter
+# **JO Telesport** 🏅  
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
 
-Don't forget to install your node_modules before starting (`npm install`).
+L'application **JO Telesport** est une application construite sur le Framework Angular qui permet de visualiser les données relatives aux Jeux Olympiques.  
+L'application est développée dans le cadre de la formation [OpenClassroom](https://openclassrooms.com) Java Dev FullStack Projet 2 "Développez le front-end en utilisant Angular".  
+L'application propose un Dashboard permettant d'avoir une vision d'ensemble des données Olympiques.  
+Un Drill down dans le graphique permet d'accéder à des détails concernant un pays en particulier.  
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## **Fonctionnalités principales**  
+- **Chiffres clés** : Affichage de compteurs globaux pour le nombre de participations, médailles et athlètes par pays.  
+- **Graphs interactifs** : Affichage des données sous forme de graphiques via la librairie ngx-graphs
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## **Installer l'application**
+*Prérequis*:
+Avant de commencer, installer : 
+- Node.js
+- Angular CLI
 
-## Where to start
 
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
+*Cloner le repos*: 
 
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
+   ```shell
+   git clone https://github.com/jceintrey/JO-Telesport-front.git
+   cd JO-Telesport-front
+   ```  
+*Installer les dépendances*:
 
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
+   ```shell
+   npm install
+   ```  
 
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
+---
 
-You're now ready to implement the requested features.
+## **Lancer l'application**  
 
-Good luck!
+   Lancer l'application localement :  
+   ```bash
+   ng serve
+   ```  
+   Ouvrir [http://localhost:4200](http://localhost:4200) 
+
+
+  
+
+---
+
+## **Structure du projet**  
+- **`src/app/core/models`** : Contient les interfaces Typescript
+--**`src/app/core/services`** : Contient les services
+--**`src/app/pages`** : Contient les composants
+- **`src/assets`** : Contient les fichiers statiques
+- **`src/styles.scss`** : Fichier global pour les styles SCSS.  
+
+
+---
+
+## **Documentation**  
+La documentation est générée avec **Compodoc**.  
+
+   ```bash
+   npm run compodoc
+   ```  
+   Ouvrir [http://localhost:8080](http://localhost:8080) pour visualiser la documentation générée.  
+
+---
+
+## **Contribution**  
+Ce code est un fork de [Developpez-le-front-end-en-utilisant-Angular](https://github.com/OpenClassrooms-Student-Center/Developpez-le-front-end-en-utilisant-Angular)
+
+---
+
+## **Auteur**  
+Créé par **jceintrey**, étudiant développeur d'application Full Stack.
+
+---
+

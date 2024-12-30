@@ -21,10 +21,30 @@ import { NGXLogger } from 'ngx-logger';
   providedIn: 'root', //Le service n'est instancié qu'une fois et disponible dans toute l'application
 })
 export class OlympicService {
+
+  /**
+  * String Url de récupération des données Olympiques
+  * @private
+  */
   private olympicUrl = './assets/mock/olympic.json';
+
+/**
+ * BehaviorSubject représentant les données des Jeux Olympiques.
+ * 
+ * - Émet un tableau contenant les informations des Jeux Olympiques.
+ * - Initialisé avec un tableau vide par défaut.
+ * 
+ * @private
+ * @type {BehaviorSubject<Olympic[]>}
+ */
   private olympics$ = new BehaviorSubject<Olympic[]>([]);
 
-
+/**
+ * Constructeur du service OlympicService.
+ * 
+ * @param {HttpClient} http - Service pour effectuer des requêtes HTTP.
+ * @param {NGXLogger} logger - Service pour journaliser
+ */
   constructor(private http: HttpClient, private logger: NGXLogger) {
   }
 
@@ -34,7 +54,7 @@ export class OlympicService {
    * - Envoie les données dans le BehaviorSubject olympics$
    * - Retourne un observable avec tableau vide en cas d'erreur
    */
-  loadInitialData() {
+  public loadInitialData() {
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
       tap((value) => {
         this.olympics$.next(value);
@@ -53,7 +73,7 @@ export class OlympicService {
   * Renvoie un observable sur les données olympiques
   * @returns un Observable contenant un tableau d'Olympic
   */
-  getOlympics(): Observable<Olympic[]> {
+  public getOlympics(): Observable<Olympic[]> {
     return this.olympics$.asObservable();
   }
 
