@@ -10,7 +10,8 @@ import { LineGraphData } from 'src/app/core/models/LineGraphData';
   selector: 'app-details',
   standalone: false,
   templateUrl: './details.component.html',
-  styleUrl: './details.component.scss',
+  styleUrls: ['./details.component.scss']
+  
 })
 
 /**
@@ -26,19 +27,68 @@ import { LineGraphData } from 'src/app/core/models/LineGraphData';
  * @implements OnDestroy
  */
 export class DetailsComponent implements OnInit, OnDestroy {
-  public olympics$: Observable<Olympic[]> = new Observable<Olympic[]>();
-  private subscription: Subscription = new Subscription();
-  
 
-  //Propriétés utilisées dans le template
-  public colorScheme: any;
-  public country!: string;
-  public numberOfEntries!: number;
-  public numberOfMedals!: number;
-  public numberOfAthletes!: number;
+  /**
+ * Observable représentant les données des Jeux Olympiques.
+ * 
+ * @public
+ * @type {Observable<Olympic[]>}
+ */
+  public olympics$: Observable<Olympic[]> = new Observable<Olympic[]>();
+
+/**
+ * Subscription représentant l'abonnement au service
+ * 
+ * @public
+ * @type {Subscription}
+ */
+  private subscription: Subscription = new Subscription();
+
+  /**
+   * flag qui permet de savoir si le pays sélectionné est dans les données
+   *
+   * @type {boolean}
+   */
   public countryNotFound: boolean = false;
+  /**
+   * Données utilisées pour générer un graphique en ligne
+   *
+   * @type {LineGraphData[]}
+   */
   public data!: LineGraphData[];
 
+  //Autres propriétés utilisées dans le template
+
+  /**
+   * Schéma des couleurs pour le graph
+   */
+  public colorScheme: any;
+  
+  /**
+   * Pays sélectionné 
+   */
+  public country!: string;
+  /**
+   * Compteur d'entrées = nombre de participations
+   */
+  public numberOfEntries!: number;
+/**
+   * Compteur de médailles
+   */
+  public numberOfMedals!: number;
+  /**
+   * Compteur d'atlètes'
+   */
+  public numberOfAthletes!: number;
+
+  /**
+   * Constructeur du composant avec injection des services nécessaires
+   *
+   * @param {Router} router - Service pour effectuer le routage dans l'application
+   * @param {ActivatedRoute} route - Service pour récupérer la route active
+   * @param {OlympicService} olympicService - Service pour accéder aux données de l'application
+   * @param {NGXLogger} logger - Service pour journaliser
+   */
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -125,9 +175,9 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   /**
    * Construit un tableau de LineGraphData
-   * 
+   *
    * - Construit les données attendues par liengraph de ngx-charts
-   * 
+   *
    * @param olympics Liste des données olympiques
    * @param country le pays
    * @returns LineGraphData[]

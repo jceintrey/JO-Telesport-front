@@ -7,9 +7,10 @@ import { NGXLogger } from 'ngx-logger';
   standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['../styles.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  [x: string]: any;
   private subscription: Subscription = new Subscription();
 
   constructor(

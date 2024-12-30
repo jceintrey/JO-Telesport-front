@@ -1,0 +1,1352 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>jo-telesport-application documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/vagrant.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">jo-telesport-application documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Saisissez un texte"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Composants</li>
+  <li class="breadcrumb-item"
+  >
+  DetailsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>Fichier</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/details/details.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implémente</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Métadonnées</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-details</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./details.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./details.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Propriétés</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#colorScheme" >colorScheme</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#country" >country</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#countryNotFound" >countryNotFound</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#numberOfAthletes" >numberOfAthletes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#numberOfEntries" >numberOfEntries</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#numberOfMedals" >numberOfMedals</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#olympics$" >olympics$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#subscription" >subscription</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Méthodes</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildData" >buildData</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructeur</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: Router, route: ActivatedRoute, olympicService: <a href="../injectables/OlympicService.html" target="_self">OlympicService</a>, logger: NGXLogger)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Défini dans <a href="" data-line="82" class="link-to-prism">src/app/pages/details/details.component.ts:82</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructeur du composant avec injection des services nécessaires</p>
+</div>
+                            <div>
+                                    <b>Paramètres :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Nom</td>
+                                                    <td>Type</td>
+                                                <td>Optionnel</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Non
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Service pour effectuer le routage dans l&#39;application</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Non
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Service pour récupérer la route active</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>olympicService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OlympicService.html" target="_self" >OlympicService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Non
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Service pour accéder aux données de l&#39;application</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                    <code>NGXLogger</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Non
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Service pour journaliser</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Méthodes
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildData</b></span>
+                        <a href="#buildData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildData(olympics: <a href="../interfaces/Olympic.html" target="_self">Olympic[]</a>, country: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Défini dans <a href="" data-line="186"
+                                    class="link-to-prism">src/app/pages/details/details.component.ts:186</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Construit un tableau de LineGraphData</p>
+<ul>
+<li>Construit les données attendues par liengraph de ngx-charts</li>
+</ul>
+</div>
+
+                            <div class="io-description">
+                                <b>Paramètres :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Nom</td>
+                                                <td>Type</td>
+                                            <td>Optionnel</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>olympics</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Olympic.html" target="_self" >Olympic[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Non
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Liste des données olympiques</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>country</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Non
+                                            </td>
+
+
+                                            <td>
+                                                    <p>le pays</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Renvoie : </b>        <code><a href="../interfaces/LineGraphData.html" target="_self" >LineGraphData[]</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>LineGraphData[]</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Défini dans <a href="" data-line="171"
+                                    class="link-to-prism">src/app/pages/details/details.component.ts:171</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Termine proprement lors de la destruction du composant.</p>
+<ul>
+<li>Désabonne l&#39;Observable.</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Renvoie : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Défini dans <a href="" data-line="109"
+                                    class="link-to-prism">src/app/pages/details/details.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Initialise les données du composant</p>
+<ul>
+<li>Récupère les données olympiques sous forme d&#39;un Observable via le service OlympicService.</li>
+<li>Configure les couleurs pour le graphique en ligne.</li>
+<li>Récupère et vérifie le paramètre countryName</li>
+<li>Prépare les données pour construire le graphique.</li>
+<li>Calcule les chiffres clés affichés dans les cartes.</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Renvoie : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Propriétés
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorScheme"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>colorScheme</b></span>
+                        <a href="#colorScheme"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Défini dans <a href="" data-line="65" class="link-to-prism">src/app/pages/details/details.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Schéma des couleurs pour le graph</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="country"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>country</b></span>
+                        <a href="#country"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Défini dans <a href="" data-line="70" class="link-to-prism">src/app/pages/details/details.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Pays sélectionné</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="countryNotFound"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>countryNotFound</b></span>
+                        <a href="#countryNotFound"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valeur par défaut : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Défini dans <a href="" data-line="52" class="link-to-prism">src/app/pages/details/details.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>flag qui permet de savoir si le pays sélectionné est dans les données</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="data"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>data</b></span>
+                        <a href="#data"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/LineGraphData.html" target="_self" >LineGraphData[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Défini dans <a href="" data-line="58" class="link-to-prism">src/app/pages/details/details.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Données utilisées pour générer un graphique en ligne</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="numberOfAthletes"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>numberOfAthletes</b></span>
+                        <a href="#numberOfAthletes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Défini dans <a href="" data-line="82" class="link-to-prism">src/app/pages/details/details.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Compteur d&#39;atlètes&#39;</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="numberOfEntries"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>numberOfEntries</b></span>
+                        <a href="#numberOfEntries"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Défini dans <a href="" data-line="74" class="link-to-prism">src/app/pages/details/details.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Compteur d&#39;entrées = nombre de participations</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="numberOfMedals"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>numberOfMedals</b></span>
+                        <a href="#numberOfMedals"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Défini dans <a href="" data-line="78" class="link-to-prism">src/app/pages/details/details.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Compteur de médailles</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="olympics$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>olympics$</b></span>
+                        <a href="#olympics$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Olympic.html" target="_self" >Observable&lt;Olympic[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valeur par défaut : </i><code>new Observable&lt;Olympic[]&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Défini dans <a href="" data-line="37" class="link-to-prism">src/app/pages/details/details.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable représentant les données des Jeux Olympiques.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>subscription</b></span>
+                        <a href="#subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Valeur par défaut : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Défini dans <a href="" data-line="45" class="link-to-prism">src/app/pages/details/details.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription représentant l&#39;abonnement au service</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { Observable, Subscription } from &#x27;rxjs&#x27;;
+import { Olympic } from &#x27;src/app/core/models/Olympic&#x27;;
+import { OlympicService } from &#x27;src/app/core/services/olympic.service&#x27;;
+import { NGXLogger } from &#x27;ngx-logger&#x27;;
+import { LineGraphData } from &#x27;src/app/core/models/LineGraphData&#x27;;
+
+@Component({
+  selector: &#x27;app-details&#x27;,
+  standalone: false,
+  templateUrl: &#x27;./details.component.html&#x27;,
+  styleUrls: [&#x27;./details.component.scss&#x27;]
+  
+})
+
+/**
+ * Composant de page détail de l&#x27;application.
+ * Ce composant affiche les données Olympiques d&#x27;un pays en particulier
+ *
+ * - Utilise le service OlympicService pour récupérer les données.
+ * - Est appelé par passage du paramètre countryName en GET.
+ * - Gère les graphiques via ngx-charts.
+ *
+ * @component
+ * @implements OnInit
+ * @implements OnDestroy
+ */
+export class DetailsComponent implements OnInit, OnDestroy {
+
+  /**
+ * Observable représentant les données des Jeux Olympiques.
+ * 
+ * @public
+ * @type {Observable&lt;Olympic[]&gt;}
+ */
+  public olympics$: Observable&lt;Olympic[]&gt; &#x3D; new Observable&lt;Olympic[]&gt;();
+
+/**
+ * Subscription représentant l&#x27;abonnement au service
+ * 
+ * @public
+ * @type {Subscription}
+ */
+  private subscription: Subscription &#x3D; new Subscription();
+
+  /**
+   * flag qui permet de savoir si le pays sélectionné est dans les données
+   *
+   * @type {boolean}
+   */
+  public countryNotFound: boolean &#x3D; false;
+  /**
+   * Données utilisées pour générer un graphique en ligne
+   *
+   * @type {LineGraphData[]}
+   */
+  public data!: LineGraphData[];
+
+  //Autres propriétés utilisées dans le template
+
+  /**
+   * Schéma des couleurs pour le graph
+   */
+  public colorScheme: any;
+  
+  /**
+   * Pays sélectionné 
+   */
+  public country!: string;
+  /**
+   * Compteur d&#x27;entrées &#x3D; nombre de participations
+   */
+  public numberOfEntries!: number;
+/**
+   * Compteur de médailles
+   */
+  public numberOfMedals!: number;
+  /**
+   * Compteur d&#x27;atlètes&#x27;
+   */
+  public numberOfAthletes!: number;
+
+  /**
+   * Constructeur du composant avec injection des services nécessaires
+   *
+   * @param {Router} router - Service pour effectuer le routage dans l&#x27;application
+   * @param {ActivatedRoute} route - Service pour récupérer la route active
+   * @param {OlympicService} olympicService - Service pour accéder aux données de l&#x27;application
+   * @param {NGXLogger} logger - Service pour journaliser
+   */
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private olympicService: OlympicService,
+    private logger: NGXLogger
+  ) {}
+
+  /**
+   * Initialise les données du composant
+   *
+   * - Récupère les données olympiques sous forme d&#x27;un Observable via le service OlympicService.
+   * - Configure les couleurs pour le graphique en ligne.
+   * - Récupère et vérifie le paramètre countryName
+   * - Prépare les données pour construire le graphique.
+   * - Calcule les chiffres clés affichés dans les cartes.
+   *
+   */
+  ngOnInit(): void {
+    this.olympics$ &#x3D; this.olympicService.getOlympics();
+
+    //Schéma manuel de couleurs pour le graph
+    this.colorScheme &#x3D; {
+      domain: [&#x27;#5AA454&#x27;, &#x27;#A10A28&#x27;, &#x27;#C7B42C&#x27;],
+    };
+
+    //Récupération du paramètre countryName passé
+    this.route.queryParams.subscribe((params) &#x3D;&gt; {
+      this.country &#x3D; params[&#x27;countryName&#x27;];
+
+      //validation du paramètre
+      const countryNameRegex &#x3D; /^[A-Za-z\-]+$/;
+      if (!this.country || !countryNameRegex.test(this.country)) {
+        this.logger.error(
+          &#x60;Le paramètre countryName ${this.country} n&#x27;est pas conforme&#x60;
+        );
+        this.countryNotFound &#x3D; true;
+        return;
+      }
+    });
+
+    // Construction des différentes données à afficher à partir des data de l&#x27;observable
+    this.subscription &#x3D; this.olympics$.subscribe((olympic) &#x3D;&gt; {
+      // On verifie si le country existe
+      if (!this.olympicService.countryExist(olympic, this.country)) {
+        this.logger.error(&#x60;Le pays demandé \&#x27;${this.country}\&#x27; n&#x27;existe pas&#x60;);
+        this.countryNotFound &#x3D; true;
+        return;
+      }
+
+      this.countryNotFound &#x3D; false;
+
+      // construction du tableau de données pour le linegraph
+      this.data &#x3D; this.buildData(olympic, this.country);
+      this.logger.debug(&#x27;Data: &#x27; + this.data);
+
+      // calcul des compteurs du nombre de participations, de médailles et d&#x27;athlètes pour le pays
+      this.numberOfEntries &#x3D; this.olympicService.calculateCountsForCountry(
+        olympic,
+        this.country,
+        &#x27;participations&#x27;
+      );
+      this.numberOfMedals &#x3D; this.olympicService.calculateCountsForCountry(
+        olympic,
+        this.country,
+        &#x27;medals&#x27;
+      );
+      this.numberOfAthletes &#x3D; this.olympicService.calculateCountsForCountry(
+        olympic,
+        this.country,
+        &#x27;athletes&#x27;
+      );
+    });
+  }
+
+  /**
+   * Termine proprement lors de la destruction du composant.
+   *
+   * - Désabonne l&#x27;Observable.
+   */
+  ngOnDestroy(): void {
+    this.logger.debug(&#x27;Desctruction du composant&#x27;);
+    this.subscription.unsubscribe();
+  }
+
+  /**
+   * Construit un tableau de LineGraphData
+   *
+   * - Construit les données attendues par liengraph de ngx-charts
+   *
+   * @param olympics Liste des données olympiques
+   * @param country le pays
+   * @returns LineGraphData[]
+   */
+
+  private buildData(olympics: Olympic[], country: string): LineGraphData[] {
+    const countryData &#x3D; olympics.find((olympic) &#x3D;&gt; olympic.country &#x3D;&#x3D;&#x3D; country);
+
+    if (!countryData) {
+      this.logger.warn(&#x60;Données pour le pays &quot;${country}&quot; non trouvées.&#x60;);
+      return [];
+    }
+
+    const graphItem: LineGraphData &#x3D; {
+      name: country,
+      series: countryData.participations.map((participation) &#x3D;&gt; ({
+        name: participation.year.toString(),
+        value: participation.medalsCount,
+      })),
+    };
+
+    return [graphItem]; // Retourne un tableau avec ici un seul objet (serie) pour le pays
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Gestion du cas pays non trouvé --&gt;
+&lt;div *ngIf&#x3D;&quot;countryNotFound&quot;&gt;
+  &lt;div class&#x3D;&quot;top&quot;&gt;
+    &lt;div class&#x3D;&quot;buton&quot;&gt;&lt;a routerLink&#x3D;&quot;&quot;&gt;Retour au dashboard&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;error-container&quot;&gt;
+    &lt;div class&#x3D;&quot;error-message&quot;&gt;
+      &lt;img src&#x3D;&quot;assets/images/error.png&quot; alt&#x3D;&quot;Error Logo&quot; class&#x3D;&quot;error-logo&quot; /&gt;
+      &lt;p&gt;Le pays &#x27;{{ country }}&#x27; n&#x27;existe pas dans les données olympiques.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div *ngIf&#x3D;&quot;!countryNotFound&quot;&gt;
+  &lt;div class&#x3D;&quot;top&quot;&gt;
+    &lt;div class&#x3D;&quot;buton&quot;&gt;&lt;a routerLink&#x3D;&quot;&quot;&gt;Retour au dashboard&lt;/a&gt;&lt;/div&gt;
+    &lt;span class&#x3D;&quot;titre&quot;&gt;{{ country }}&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Section avec les cartes --&gt;
+  &lt;div class&#x3D;&quot;container-card&quot;&gt;
+    &lt;div class&#x3D;&quot;card&quot;&gt;
+      &lt;span class&#x3D;&quot;label&quot;&gt;Number of Entries&lt;/span&gt;&lt;br /&gt;&lt;strong&gt;{{
+        numberOfEntries
+      }}&lt;/strong&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;card&quot;&gt;
+      &lt;span class&#x3D;&quot;label&quot;&gt;Total medals&lt;/span&gt;&lt;br /&gt;&lt;strong&gt;{{
+        numberOfMedals
+      }}&lt;/strong&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;card&quot;&gt;
+      &lt;span class&#x3D;&quot;label&quot;&gt;Total athletes&lt;/span&gt;&lt;br /&gt;&lt;strong&gt;{{
+        numberOfAthletes
+      }}&lt;/strong&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Section graphique --&gt;
+  &lt;div class&#x3D;&quot;container-chart&quot;&gt;
+    &lt;div #ContainerRef class&#x3D;&quot;line-chart&quot;&gt;
+      &lt;ngx-charts-line-chart
+        [customColors]&#x3D;&quot;colorScheme&quot;
+        [results]&#x3D;&quot;data&quot;
+        [xAxis]&#x3D;&quot;true&quot;
+        [yAxis]&#x3D;&quot;true&quot;
+        [autoScale]&#x3D;&quot;true&quot;
+        [legend]&#x3D;&quot;false&quot;
+        [showXAxisLabel]&#x3D;&quot;true&quot;
+        [showYAxisLabel]&#x3D;&quot;true&quot;
+        [xAxisLabel]&#x3D;&quot;&#x27;Dates&#x27;&quot;
+      &gt;
+      &lt;/ngx-charts-line-chart&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./details.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/*
+* ----------------------------------------
+* Styles pour le graph LineChart
+* ----------------------------------------
+*/
+
+.container-chart .line-chart {
+  display: flex;
+  justify-content: center; // Centre horizontalement dans le conteneur container-chart
+  align-items: flex-start; // Centre verticalement dans le conteneur container-chart
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+/*
+* ----------------------------------------
+* Media queries pour gérer les spécificités des écrans
+* Surcharge des media queries définis dans styles.scss
+* ----------------------------------------
+*/
+@media (orientation: landscape) {
+  //adaptation de la taille du label en abscisse
+  ::ng-deep .x.axis text {
+    font-size: 1.2vw !important;
+    opacity: 0.8;
+    
+  }
+  //graduation en abscisse
+  ::ng-deep .x.axis .tick text {
+    font-size: 1.2vw !important;
+    fill: black !important; // Labels de l&#x27;axe X
+    opacity: 0.8;
+    margin: 10%;
+  }
+
+  //graduation en ordonnée
+  ::ng-deep .y.axis .tick text {
+    font-size: 1.2vw !important;
+    fill: black !important; // Labels de l&#x27;axe Y
+    opacity: 0.8;
+
+  }
+}
+
+@media (orientation: portrait) {
+  //adaptation de la taille du label en abscisse
+  ::ng-deep .x.axis text {
+    font-size: 1.2vw !important;
+    opacity: 0.8;
+  }
+  //graduation en abscisse
+  ::ng-deep .x.axis .tick text {
+    font-size: 1.2vw !important;
+    fill: black !important;
+    opacity: 0.8;
+  }
+  //graduation en ordonnée
+  ::ng-deep .y.axis .tick text {
+    font-size: 1.2vw !important;
+    fill: black !important; // Labels de l&#x27;axe Y
+    opacity: 0.8;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Légende</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Elément Html</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Composant</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Elément Html avec une directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Gestion du cas pays non trouvé --><div *ngIf="countryNotFound">  <div class="top">    <div class="buton"><a routerLink="">Retour au dashboard</a></div>  </div>  <div class="error-container">    <div class="error-message">      <img src="assets/images/error.png" alt="Error Logo" class="error-logo" />      <p>Le pays \'{{ country }}\' n\'existe pas dans les données olympiques.</p>    </div>  </div></div><div *ngIf="!countryNotFound">  <div class="top">    <div class="buton"><a routerLink="">Retour au dashboard</a></div>    <span class="titre">{{ country }}</span>  </div>  <!-- Section avec les cartes -->  <div class="container-card">    <div class="card">      <span class="label">Number of Entries</span><br /><strong>{{        numberOfEntries      }}</strong>    </div>    <div class="card">      <span class="label">Total medals</span><br /><strong>{{        numberOfMedals      }}</strong>    </div>    <div class="card">      <span class="label">Total athletes</span><br /><strong>{{        numberOfAthletes      }}</strong>    </div>  </div>    <!-- Section graphique -->  <div class="container-chart">    <div #ContainerRef class="line-chart">      <ngx-charts-line-chart        [customColors]="colorScheme"        [results]="data"        [xAxis]="true"        [yAxis]="true"        [autoScale]="true"        [legend]="false"        [showXAxisLabel]="true"        [showYAxisLabel]="true"        [xAxisLabel]="\'Dates\'"      >      </ngx-charts-line-chart>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DetailsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> résultats matchant "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">Aucun résultat matchant "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DetailsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

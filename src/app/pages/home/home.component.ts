@@ -25,13 +25,41 @@ import { PieGraphData } from 'src/app/core/models/PieGraphData';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  /**
+   * Observable représentant les données des Jeux Olympiques.
+   *
+   * @public
+   * @type {Observable<Olympic[]>}
+   */
   public olympics$: Observable<Olympic[]> = new Observable<Olympic[]>();
 
-  public countriesCount: number = 0;
-  public joCount: number = 0;
-
-  public pieChartData: { name: string; value: number }[] = [];
+  /**
+   * Subscription représentant l'abonnement au service
+   *
+   * @public
+   * @type {Subscription}
+   */
   private subscription: Subscription = new Subscription();
+
+  /**
+   * Compteur de nombre de pays participants
+   */
+  public countriesCount: number = 0;
+
+  /**
+   * Compteur de nombre de jeux
+   */
+  public joCount: number = 0;
+ 
+  /**
+   * Données utilisées pour générer un graphique de type Pie
+   *
+   * @type {pieChartData[]}
+   */
+  public pieChartData: { name: string; value: number }[] = [];
+  /**
+   * Schéma des couleurs pour le graph
+   */
   public colorScheme: any;
 
   constructor(
@@ -51,7 +79,6 @@ export class HomeComponent implements OnInit, OnDestroy {
    */
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
-
 
     //Schéma manuel de couleurs pour le graph
     this.colorScheme = {
@@ -79,7 +106,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.joCount = this.olympicService.calculateJoCounts(olympics);
       console.log('Nombre de JO:', this.joCount);
     });
-
   }
 
   /**
@@ -139,7 +165,7 @@ export class HomeComponent implements OnInit, OnDestroy {
    * Gère l'évènement survol sur une part du PieChart
    *
    * - méthode non utilisée et préparée pour une utilisation future
-   *
+   * @ignore
    * @param data données
    * @returns void
    */
@@ -151,7 +177,7 @@ export class HomeComponent implements OnInit, OnDestroy {
    * Gère l'évènement fin de survol sur une part du PieChart
    *
    * - méthode non utilisée et préparée pour une utilisation future
-   *
+   * @ignore
    * @param data données
    * @returns void
    */
