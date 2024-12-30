@@ -5,16 +5,19 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DetailsComponent } from './pages/details/details.component';
 
 const routes: Routes = [
+    // Page d'accueil de l'application avec un Dashboard global
   {
     path: '',
     component: HomeComponent,
   },
+    // Détails statistique pour un pays
   {
     path: 'details',
     component: DetailsComponent,
   },
+      // Autres chemins
   {
-    path: '**', // wildcard
+    path: '**',
     component: NotFoundComponent,
   },
 ];

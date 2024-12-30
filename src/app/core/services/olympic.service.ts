@@ -1,31 +1,58 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, retry, tap } from 'rxjs/operators';
 import { Olympic } from '../models/Olympic';
+import { NGXLogger } from 'ngx-logger';
 
+/**
+ * Service pour gérer les données de Jeux Olympiques
+ * Ce service charge et gère les données à partir d'un fichier json statique
+ *
+ *
+ *
+ * @example
+ * //utiliser OlympicService dans un composant
+ * this.olympicService.getOlympics().subscribe((olympinc) => {//utilisation de olympic:Olympic[]};
+ * //charger ou recharger les données
+ * this.olympicService.loadInitialData().pipe(take(1)).subscribe();
+ */
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root', //Le service n'est instancié qu'une fois et disponible dans toute l'application
 })
 export class OlympicService {
   private olympicUrl = './assets/mock/olympic.json';
   private olympics$ = new BehaviorSubject<Olympic[]>([]);
 
-  constructor(private http: HttpClient) {}
 
+  constructor(private http: HttpClient, private logger: NGXLogger) {
+  }
+
+  /* Fonction permettant de charger les données à partir du fichier à l'adresse olympicUrl
+   *
+   * - Effectue une requète http pour récupérer les données
+   * - Envoie les données dans le BehaviorSubject olympics$
+   * - Retourne un observable avec tableau vide en cas d'erreur
+   */
   loadInitialData() {
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
-      tap((value) => this.olympics$.next(value)),
+      tap((value) => {
+        this.olympics$.next(value);
+      }),
+
       catchError((error, caught) => {
-        // TODO: improve error handling
-        console.error(error);
-        // can be useful to end loading state and let the user know something went wrong
+        this.logger.error(`Erreur lors dans loadInitialData: ${error}`);
+        // Mise à jour du BehaviorSubject avec un tableau vide
         this.olympics$.next([]);
-        return caught;
+        return of([]);
       })
     );
   }
 
+  /**
+  * Renvoie un observable sur les données olympiques
+  * @returns un Observable contenant un tableau d'Olympic
+  */
   getOlympics(): Observable<Olympic[]> {
     return this.olympics$.asObservable();
   }
@@ -39,7 +66,6 @@ export class OlympicService {
    * @param type le type de total
    * @returns number le nombre total
    */
-
   public calculateCountsForCountry(
     olympics: Olympic[],
     country: string,
@@ -133,7 +159,7 @@ export class OlympicService {
     return joSet.size;
   }
 
-/**
+  /**
    * Vérifie si le pays existe dans les données Olympiques
    * @param olympics Liste des données olympiques.
    * @param country nom du pays

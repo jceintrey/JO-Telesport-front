@@ -23,11 +23,8 @@ import { DetailsComponent } from './pages/details/details.component';
     BrowserAnimationsModule,
     RouterLink,
     HttpClientModule,
-    // autres modules
     LoggerModule.forRoot({
-      level: NgxLoggerLevel.DEBUG,  // Différents niveaux de log ici (TRACE, DEBUG, INFO, WARN, ERROR, FATAL)
-     // serverLogLevel: NgxLoggerLevel.ERROR,
-      // serverLoggingUrl: 'http://localhost:8080' // Serveur NXlog
+      level: NgxLoggerLevel.DEBUG,
     })
   ],
   providers: [],

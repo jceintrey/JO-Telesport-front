@@ -1,15 +1,15 @@
 /*
 * ----------------------------------------
-* Styles pour la partie graphique
+* Styles pour le PieChart
 * ----------------------------------------
 */
 
 .container-chart .pie-chart {
   display: flex;
-  aspect-ratio: 3 / 2; /* Ratio par défaut */
-  max-height: 90vh; /* Limite la hauteur à 90% de l'écran */
-  width: 100%; /* Utilise toute la largeur disponible */
-  align-self: flex-start; /* Aligne le composant au début du conteneur */
+  aspect-ratio: 3 / 2; // Ratio par défaut
+  max-height: 90vh; // Limite la hauteur à 90% de l'écran
+  width: 100%; // Utilise toute la largeur disponible
+  align-self: flex-start; // Aligne le composant au début du conteneur
 }
 ::ng-deep .pie-label {
   opacity: 0.6;
