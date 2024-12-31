@@ -12,7 +12,7 @@ jobs:
     steps:
     # cleaning de ./documentation
     - name: Disable Jekyll processing
-      run: echo "" > ./documentation/.nojekyll
+      run: mkdir -p ./documentation && echo "" > ./documentation/.nojekyll
 
     # Cloner le dépôt
     - name: Checkout repository
