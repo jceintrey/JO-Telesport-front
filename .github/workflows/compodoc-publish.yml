@@ -1,0 +1,41 @@
+name: Publish Compodoc Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # cleaning de ./documentation
+    - name: Disable Jekyll processing
+      run: echo "" > ./documentation/.nojekyll
+
+    # Cloner le dépôt
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Installer Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    # Installer les dépendances
+    - name: Install dependencies
+      run: npm install
+
+    # Générer la documentation avec Compodoc
+    - name: Generate documentation
+      run: npx compodoc -p tsconfig.json -d documentation --theme vagrant --language fr-FR
+
+    # Déployer sur GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./documentation
+        
