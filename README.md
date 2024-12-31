@@ -58,8 +58,15 @@ Avant de commencer, installer :
 
 ---
 
+## **Site démo**  
+
+Une version est déployée et mise à dispo sur [https://jo-telesport.netlify.app/](https://jo-telesport.netlify.app/) à chaque merge sur la branche main.
+
+
+---
+
 ## **Documentation**  
-La documentation est générée avec **Compodoc**.  
+La documentation est générée avec **Compodoc** et accessible [https://jceintrey.github.io/JO-Telesport-front/index.html](https://jceintrey.github.io/JO-Telesport-front/index.html)
 
 Elle est générée à chaque merge sur la branche via github Pages main mais peut être générée en locale.
 
