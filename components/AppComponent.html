@@ -1,0 +1,880 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>jo-telesport-application documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">jo-telesport-application documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  AppComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/app.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-root</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>../styles.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./app.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#subscription" >subscription</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(olympicService: <a href="../injectables/OlympicService.html" target="_self">OlympicService</a>, logger: NGXLogger)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/app.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>olympicService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OlympicService.html" target="_self" >OlympicService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                    <code>NGXLogger</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/app/app.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Termine proprement lors de la destruction du composant.</p>
+<ul>
+<li>Désabonne l&#39;Observable.</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="28"
+                                    class="link-to-prism">src/app/app.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Initialise les données du composants</p>
+<ul>
+<li>charge les données du service</li>
+<li>s&#39;abonne au service</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>subscription</b></span>
+                        <a href="#subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/app.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { Subscription, take } from &#x27;rxjs&#x27;;
+import { OlympicService } from &#x27;./core/services/olympic.service&#x27;;
+import { NGXLogger } from &#x27;ngx-logger&#x27;;
+
+@Component({
+  standalone: false,
+  selector: &#x27;app-root&#x27;,
+  templateUrl: &#x27;./app.component.html&#x27;,
+  styleUrls: [&#x27;../styles.scss&#x27;],
+})
+export class AppComponent implements OnInit, OnDestroy {
+  [x: string]: any;
+  private subscription: Subscription &#x3D; new Subscription();
+
+  constructor(
+    private olympicService: OlympicService,
+    private logger: NGXLogger
+  ) {}
+
+  /**
+   * Initialise les données du composants
+   *
+   * - charge les données du service
+   * - s&#x27;abonne au service
+   *
+   */
+  ngOnInit(): void {
+    this.olympicService.loadInitialData().pipe(take(1)).subscribe();
+  }
+
+  /**
+   * Termine proprement lors de la destruction du composant.
+   *
+   * - Désabonne l&#x27;Observable.
+   */
+  ngOnDestroy(): void {
+    this.logger.debug(&#x27;Desctruction du composant&#x27;);
+    this.subscription.unsubscribe();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;router-outlet&gt;&lt;/router-outlet&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>../styles.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/**
+ * 
+ * Fichier global de styles pour l&#x27;application.
+ *
+ * - Contient les styles partagés pour les composants
+ */
+
+/*
+* ----------------------------------------
+* Styles d&#x27;entête contenant le titre
+* ----------------------------------------
+*/
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    position: relative;
+  }
+  
+  .buton {
+    display: block;
+    border-radius: 10px;
+    align-self: flex-start;
+    background-color: transparent;
+    padding: 1%;
+    border: solid;
+    border-color: rgb(121, 61, 82);
+    margin: 1%;
+    color: rgb(121, 61, 82);
+    font-size: 1vw;
+    font-family: &quot;Roboto&quot;, sans-serif;
+    position: absolute;
+    left: 2vw;
+  }
+  .buton a {
+    text-decoration: none !important;
+    color: inherit;
+  }
+  
+  .buton a:visited,
+  .buton a:hover,
+  .buton a:active {
+    text-decoration: none !important;
+    color: inherit;
+  }
+  
+  .titre {
+    display: block;
+    border-radius: 10px;
+    background-color: rgb(4, 131, 143);
+    max-height: 10vh;
+    padding: 1%;
+    margin: 1%;
+    color: white;
+    font-size: x-large;
+    font-family: &quot;Roboto&quot;, sans-serif;
+  }
+  
+  /*
+  * ----------------------------------------
+  * Styles contenant les cartes de chiffres clé
+  * ----------------------------------------
+  */
+  .container-card {
+    display: flex;
+    flex-direction: row;
+  
+    justify-content: center;
+    max-height: 20vh;
+    font-family: &quot;Roboto&quot;, sans-serif;
+  }
+  
+  .container-card .card {
+    padding: 1%;
+    margin: 1%;
+    border: 2px solid rgb(4, 131, 143);
+    border-radius: 10px;
+    text-align: center;
+  }
+  .container-card .card .label {
+    opacity: 0.4;
+  }
+  
+  /*
+  * ----------------------------------------
+  * Styles généraux pour la partie graphique
+  * ----------------------------------------
+  */
+  ng-star-inserted {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; // on aligne horizontalement les élements à l&#x27;intérieur au centre
+    align-items: flex-start; // on aligne verticalement les éléments à l&#x27;intérieur en haut
+  }
+  
+  .container-chart {
+    display: flex;
+    flex-direction: row; // on dispose les éléments en ligne
+    justify-content: center; // on aligne horizontalement les élements à l&#x27;intérieur au centre
+    align-items: flex-start; // on aligne verticalement les éléments à l&#x27;intérieur en haut
+    margin: 1%; // marge extérieur à 1%
+    height: 70vh; // le container prend 70% de la taille de l&#x27;écran
+    max-width: 100%; // Limite la largeur du container à 100% de la largeur de l&#x27;écran
+    max-height: 80%; // Limite la hauteur du container à 80% de la hauteur de l&#x27;écran
+    overflow: auto; /* En cas de débordement, affiche une scrollbar, sinon elle reste masquée */
+  }
+  
+  /*
+  *  tooltip using global css styles only: https://github.com/swimlane/ngx-charts/issues/1231#issuecomment-562459228
+  */
+  ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
+    .tooltip-caret.position-top {
+      border-top-color: rgb(4, 131, 143);
+      box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    }
+  
+    background-color: rgb(4, 131, 143);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    font-size: 2vh;
+    padding: 1vh;
+    border-radius: 5%;
+  }
+  
+  /*
+  * ----------------------------------------
+  * Media queries pour gérer les spécificités des écrans
+  * 3 models : smartphones, tablettes, et grand écran avec dans chaque mode une adaptation en fonction du mode portrait ou paysage
+  * Line-charts et pie-charts sont gérés globalement avec des spécificités surchargées si besoin dans les fichiers css des composants
+  * ----------------------------------------
+  */
+  
+  /* Smartphones */
+  @media screen and (max-width: 480px) {
+    /* Mode Portrait */
+    @media (orientation: portrait) {
+      .titre {
+        font-size: 6vw;     
+       
+  
+      }
+      .container-card {
+        font-size: 3vw;
+      }
+      .container-chart .line-chart {
+        width: 100%;
+        margin-top: 5%;
+        margin-left: 1%;
+        margin-right: 10%;
+        width: 100%;
+        height: 50%;
+       
+      }
+    }
+  
+    /* Mode Paysage */
+    @media (orientation: landscape) {
+      .titre {
+        font-size: 6vh;
+      }
+      .container-card {
+        font-size: 3vh;
+      }
+    }
+  }
+  
+  /* Tablettes */
+  @media screen and (min-width: 481px) and (max-width: 1024px) {
+    /* Mode Portrait */
+    @media (orientation: portrait) {
+      .titre {
+        font-size: 5vw;
+        
+       
+      }
+      .container-card {
+        font-size: 3vw;
+      }
+      .container-chart .line-chart {
+        margin-top: 5%;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 100%;
+        height: 50%;
+      }
+    }
+    /* Mode Paysage */
+    @media (orientation: landscape) {
+      .titre {
+        font-size: 6vh;
+       
+      }
+      .container-card {
+        font-size: 3vh;
+      }
+     
+      .container-chart .line-chart {
+          width: 100%;
+          height: 70%;
+          margin-top: 5%;
+          margin-left: 20%;
+          margin-right: 20%;
+        }
+    }
+  }
+  /* Grand écran */
+  @media (min-width: 1025px) {
+    /* Mode Portrait */
+    @media (orientation: portrait) {
+      .titre {
+        font-size: 5vw; 
+      }
+      .container-card {
+        font-size: 3vw;
+      }
+      .container-chart .line-chart {
+        width: 70%;
+        height: 40%;
+        margin-top: 5%;
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+    }
+    /* Mode Paysage */
+    @media (orientation: landscape) {
+      .titre {
+        font-size: 6vh; 
+       
+      }
+      .container-card {
+        font-size: 3vh;
+      }
+      .container-chart .line-chart {
+        width: 100%;
+        height: 70%;
+        margin-top: 5%;
+        margin-left: 20%;
+        margin-right: 20%;
+      }
+    }
+  }
+  
+  /*
+  * ----------------------------------------
+  * Styles contenant les éléments pour l&#x27;affichage des erreurs
+  * ----------------------------------------
+  */
+  
+  .error-container {
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: flex-start; /* Centrer verticalement */
+    height: 50vh; /* Prendre toute la hauteur de la fenêtre */
+    background-color: #fff; /* Fond semi-transparent pour l&#x27;alerte */
+  }
+  
+  .error-message {
+    text-align: center; /* Centrer le texte */
+    padding: 2vh;
+    margin-top: 20vh;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 100%; /* Limiter la largeur du message */
+  }
+  
+  .error-logo {
+    width: 10vh; /* Taille du logo */
+    height: 10vh;
+    margin-bottom: 2vh; /* Espacement entre le logo et le texte */
+  }
+  
+  .error-message p {
+    font-size: 2vw;
+    color: #e74c3c; /* Couleur rouge pour l&#x27;erreur */
+    font-weight: bold;
+  }
+  </code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><router-outlet></router-outlet></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AppComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AppComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

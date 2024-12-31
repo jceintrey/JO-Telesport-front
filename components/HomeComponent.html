@@ -1,0 +1,1232 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>jo-telesport-application documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">jo-telesport-application documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HomeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/home/home.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Composant d&#39;accueil de l&#39;application.
+Ce composant affiche un aperçu des données olympiques, y compris le nombre de pays
+participants et le nombre total de Jeux Olympiques enregistrés.</p>
+<ul>
+<li>Utilise le service <code>OlympicService</code> pour récupérer les données.</li>
+<li>Gère les graphiques via <code>ngx-charts</code>.</li>
+</ul>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+                <code>OnDestroy</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-home</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./home.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./home.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#colorScheme" >colorScheme</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#countriesCount" >countriesCount</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#joCount" >joCount</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#olympics$" >olympics$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#pieChartData" >pieChartData</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#subscription" >subscription</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#buildData" >buildData</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSelect" >onSelect</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(olympicService: <a href="../injectables/OlympicService.html" target="_self">OlympicService</a>, router: Router, logger: NGXLogger)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/pages/home/home.component.ts:63</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>olympicService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OlympicService.html" target="_self" >OlympicService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>logger</td>
+                                                  
+                                                        <td>
+                                                                    <code>NGXLogger</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buildData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>buildData</b></span>
+                        <a href="#buildData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>buildData(olympics: <a href="../interfaces/Olympic.html" target="_self">Olympic[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="128"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:128</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Construit un tableau de PieGraphData</p>
+<ul>
+<li>Construit les données attendues par PieGraph</li>
+</ul>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>olympics</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Olympic.html" target="_self" >Olympic[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Liste des données olympiques</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/PieGraphData.html" target="_self" >PieGraphData[]</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>PieGraphData[]</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Termine proprement lors de la destruction du composant.</p>
+<ul>
+<li>Désabonne l&#39;Observable.</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Initialise les données du composant</p>
+<ul>
+<li>Récupère les données olympiques sous forme d&#39;un Observable via le service OlympicService.</li>
+<li>Configure les couleurs pour le graphique en camembert.</li>
+<li>Prépare les données pour construire le graphique.</li>
+<li>Calcule les chiffres clés affichés dans les cartes.</li>
+</ul>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSelect"></a>
+                    <span class="name">
+                        <span ><b>onSelect</b></span>
+                        <a href="#onSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSelect(data: literal type)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="148"
+                                    class="link-to-prism">src/app/pages/home/home.component.ts:148</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Gère l&#39;évènement de clic sur une part du PieChart</p>
+<ul>
+<li>redirige vers la page details du pays cliqué</li>
+</ul>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>données</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>void</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="colorScheme"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>colorScheme</b></span>
+                        <a href="#colorScheme"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/pages/home/home.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Schéma des couleurs pour le graph</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="countriesCount"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>countriesCount</b></span>
+                        <a href="#countriesCount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/pages/home/home.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Compteur de nombre de pays participants</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="joCount"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>joCount</b></span>
+                        <a href="#joCount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/pages/home/home.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Compteur de nombre de jeux</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="olympics$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>olympics$</b></span>
+                        <a href="#olympics$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Olympic.html" target="_self" >Observable&lt;Olympic[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Observable&lt;Olympic[]&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/home/home.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable représentant les données des Jeux Olympiques.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pieChartData"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>pieChartData</b></span>
+                        <a href="#pieChartData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/pages/home/home.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Données utilisées pour générer un graphique de type Pie</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>subscription</b></span>
+                        <a href="#subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subscription()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/pages/home/home.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscription représentant l&#39;abonnement au service</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Observable, Subscription } from &#x27;rxjs&#x27;;
+import { Olympic } from &#x27;src/app/core/models/Olympic&#x27;;
+import { OlympicService } from &#x27;src/app/core/services/olympic.service&#x27;;
+import { NGXLogger } from &#x27;ngx-logger&#x27;;
+import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { PieGraphData } from &#x27;src/app/core/models/PieGraphData&#x27;;
+
+/**
+ * Composant d&#x27;accueil de l&#x27;application.
+ * Ce composant affiche un aperçu des données olympiques, y compris le nombre de pays
+ * participants et le nombre total de Jeux Olympiques enregistrés.
+ *
+ * - Utilise le service &#x60;OlympicService&#x60; pour récupérer les données.
+ * - Gère les graphiques via &#x60;ngx-charts&#x60;.
+ *
+ * @component
+ * @implements OnInit
+ * @implements OnDestroy
+ */
+@Component({
+  standalone: false,
+  selector: &#x27;app-home&#x27;,
+  templateUrl: &#x27;./home.component.html&#x27;,
+  styleUrls: [&#x27;./home.component.scss&#x27;],
+})
+export class HomeComponent implements OnInit, OnDestroy {
+  /**
+   * Observable représentant les données des Jeux Olympiques.
+   *
+   * @public
+   * @type {Observable&lt;Olympic[]&gt;}
+   */
+  public olympics$: Observable&lt;Olympic[]&gt; &#x3D; new Observable&lt;Olympic[]&gt;();
+
+  /**
+   * Subscription représentant l&#x27;abonnement au service
+   *
+   * @public
+   * @type {Subscription}
+   */
+  private subscription: Subscription &#x3D; new Subscription();
+
+  /**
+   * Compteur de nombre de pays participants
+   */
+  public countriesCount: number &#x3D; 0;
+
+  /**
+   * Compteur de nombre de jeux
+   */
+  public joCount: number &#x3D; 0;
+ 
+  /**
+   * Données utilisées pour générer un graphique de type Pie
+   *
+   * @type {pieChartData[]}
+   */
+  public pieChartData: { name: string; value: number }[] &#x3D; [];
+  /**
+   * Schéma des couleurs pour le graph
+   */
+  public colorScheme: any;
+
+  constructor(
+    private olympicService: OlympicService,
+    private router: Router,
+    private logger: NGXLogger
+  ) {}
+
+  /**
+   * Initialise les données du composant
+   *
+   * - Récupère les données olympiques sous forme d&#x27;un Observable via le service OlympicService.
+   * - Configure les couleurs pour le graphique en camembert.
+   * - Prépare les données pour construire le graphique.
+   * - Calcule les chiffres clés affichés dans les cartes.
+   *
+   */
+  ngOnInit(): void {
+    this.olympics$ &#x3D; this.olympicService.getOlympics();
+
+    //Schéma manuel de couleurs pour le graph
+    this.colorScheme &#x3D; {
+      domain: [
+        &#x27;#793D52&#x27;,
+        &#x27;#89A1DB&#x27;,
+        &#x27;#956065&#x27;,
+        &#x27;#B8CBE7&#x27;,
+        &#x27;#BFE0F1&#x27;,
+        &#x27;#9780A1&#x27;,
+      ],
+    };
+
+    // Construction des différentes données à afficher à partir des data de l&#x27;observable
+    this.subscription &#x3D; this.olympics$.subscribe((olympics) &#x3D;&gt; {
+      //construction des données pour le graphique
+      this.pieChartData &#x3D; this.buildData(olympics);
+
+      // Nombre de pays distincts
+      this.countriesCount &#x3D;
+        this.olympicService.calculateCountryCounts(olympics);
+      console.log(&#x27;Nombre de pays:&#x27;, this.countriesCount);
+
+      // Nombre de JO distincts
+      this.joCount &#x3D; this.olympicService.calculateJoCounts(olympics);
+      console.log(&#x27;Nombre de JO:&#x27;, this.joCount);
+    });
+  }
+
+  /**
+   * Termine proprement lors de la destruction du composant.
+   *
+   * - Désabonne l&#x27;Observable.
+   */
+  ngOnDestroy(): void {
+    this.logger.debug(&#x27;Desctruction du composant&#x27;);
+    this.subscription.unsubscribe();
+  }
+
+  /**
+   * Construit un tableau de PieGraphData
+   *
+   * - Construit les données attendues par PieGraph
+   * @param olympics Liste des données olympiques
+   * @returns PieGraphData[]
+   */
+  private buildData(olympics: Olympic[]): PieGraphData[] {
+    const medalCountByCountry &#x3D;
+      this.olympicService.calculateTotalMedalCounts(olympics);
+
+    return Object.keys(medalCountByCountry).map((country) &#x3D;&gt; {
+      return {
+        name: country,
+        value: medalCountByCountry[country],
+      };
+    });
+  }
+
+  /**
+   * Gère l&#x27;évènement de clic sur une part du PieChart
+   *
+   * - redirige vers la page details du pays cliqué
+   *
+   * @param data données
+   * @returns void
+   */
+  onSelect(data: { name: string; value: number }): void {
+    if (!data) {
+      this.logger.warn(&#x27;Aucune donnée reçue lors du clic.&#x27;);
+      return;
+    }
+
+    this.logger.debug(&#x27;Item clicked: &#x27; + data.name + &#x27; &#x27; + data.value);
+
+    try {
+      this.router.navigate([&#x27;details&#x27;], {
+        queryParams: { countryName: data.name },
+      });
+    } catch (error) {
+      this.logger.error(&#x27;Erreur lors de la navigation :&#x27;, error);
+    }
+  }
+  /**
+   * Gère l&#x27;évènement survol sur une part du PieChart
+   *
+   * - méthode non utilisée et préparée pour une utilisation future
+   * @ignore
+   * @param data données
+   * @returns void
+   */
+  onActivate(data: { name: string; value: number }): void {
+    this.logger.debug(&#x27;Activate&#x27;, JSON.parse(JSON.stringify(data)));
+  }
+
+  /**
+   * Gère l&#x27;évènement fin de survol sur une part du PieChart
+   *
+   * - méthode non utilisée et préparée pour une utilisation future
+   * @ignore
+   * @param data données
+   * @returns void
+   */
+  onDeactivate(data: { name: string; value: number }): void {
+    console.log(&#x27;Deactivate&#x27;, JSON.parse(JSON.stringify(data)));
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;top&quot;&gt;&lt;span class&#x3D;&quot;titre&quot;&gt;Medals per Country &lt;/span&gt;&lt;/div&gt;
+
+&lt;!-- Section avec les cartes --&gt;
+
+&lt;div class&#x3D;&quot;container-card&quot;&gt;
+  &lt;div class&#x3D;&quot;card&quot;&gt;
+    &lt;span class&#x3D;&quot;label&quot;&gt;Number of JOs&lt;/span&gt;&lt;br /&gt;&lt;strong&gt;{{ joCount }}&lt;/strong&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;card&quot;&gt;
+    &lt;span class&#x3D;&quot;label&quot;&gt;Number of countries&lt;/span&gt;&lt;br /&gt;&lt;strong&gt;{{
+      countriesCount
+    }}&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Section graphique --&gt;
+&lt;div class&#x3D;&quot;container-chart&quot;&gt;
+  &lt;span #ContainerRef class&#x3D;&quot;pie-chart&quot;&gt;
+    &lt;ngx-charts-pie-chart
+      [results]&#x3D;&quot;pieChartData&quot;
+      [labels]&#x3D;&quot;true&quot;
+      [doughnut]&#x3D;&quot;false&quot;
+      [explodeSlices]&#x3D;&quot;false&quot;
+      [scheme]&#x3D;&quot;colorScheme&quot;
+      [tooltipDisabled]&#x3D;&quot;false&quot;
+      [arcWidth]&#x3D;&quot;0.05&quot;
+      [gradient]&#x3D;&quot;false&quot;
+      (select)&#x3D;&quot;onSelect($event)&quot;
+      (activate)&#x3D;&quot;onActivate($event)&quot;
+      (deactivate)&#x3D;&quot;onDeactivate($event)&quot;
+    &gt;
+      &lt;ng-template #tooltipTemplate let-model&#x3D;&quot;model&quot;&gt;
+        &lt;div class&#x3D;&quot;ngx-charts-tooltip&quot;&gt;
+          {{ model.name }}&lt;br /&gt;
+          🏆{{ model.value }}
+        &lt;/div&gt;
+      &lt;/ng-template&gt;
+    &lt;/ngx-charts-pie-chart&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./home.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/*
+* ----------------------------------------
+* Styles pour le PieChart
+* ----------------------------------------
+*/
+
+.container-chart .pie-chart {
+  display: flex;
+  aspect-ratio: 3 / 2; // Ratio par défaut
+  max-height: 90vh; // Limite la hauteur à 90% de l&#x27;écran
+  width: 100%; // Utilise toute la largeur disponible
+  align-self: flex-start; // Aligne le composant au début du conteneur
+}
+::ng-deep .pie-label {
+  opacity: 0.6;
+}
+
+/*
+* ----------------------------------------
+* Media queries pour gérer les spécificités des écrans
+* Surcharge des media queries définis dans styles.scss
+* ----------------------------------------
+*/
+@media (orientation: landscape) {
+  .container-chart .pie-chart {
+    height: 90%;
+  }
+  //adaptation de la taille du label
+  ::ng-deep .pie-label {
+    font-size: 2vw !important;
+   
+  }
+  
+}
+
+@media (orientation: portrait) {
+    //adaptation de la taille du label
+  ::ng-deep .pie-label {
+    font-size: 2vh !important;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="top"><span class="titre">Medals per Country </span></div><!-- Section avec les cartes --><div class="container-card">  <div class="card">    <span class="label">Number of JOs</span><br /><strong>{{ joCount }}</strong>  </div>  <div class="card">    <span class="label">Number of countries</span><br /><strong>{{      countriesCount    }}</strong>  </div></div><!-- Section graphique --><div class="container-chart">  <span #ContainerRef class="pie-chart">    <ngx-charts-pie-chart      [results]="pieChartData"      [labels]="true"      [doughnut]="false"      [explodeSlices]="false"      [scheme]="colorScheme"      [tooltipDisabled]="false"      [arcWidth]="0.05"      [gradient]="false"      (select)="onSelect($event)"      (activate)="onActivate($event)"      (deactivate)="onDeactivate($event)"    >      <ng-template #tooltipTemplate let-model="model">        <div class="ngx-charts-tooltip">          {{ model.name }}<br />          🏆{{ model.value }}        </div>      </ng-template>    </ngx-charts-pie-chart>  </span></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HomeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
