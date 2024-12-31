@@ -61,6 +61,8 @@ Avant de commencer, installer :
 ## **Documentation**  
 La documentation est générée avec **Compodoc**.  
 
+Elle est générée à chaque merge sur la branche via github Pages main mais peut être générée en locale.
+
    ```bash
    npm run compodoc
    ```  
