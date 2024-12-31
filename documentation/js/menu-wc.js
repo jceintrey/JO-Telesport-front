@@ -19,13 +19,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                 </li>
 
                 <li class="divider"></li>
-                ${ isNormalMode ? `<div id="book-search-input" role="search"><input type="text" placeholder="Saisissez un texte"></div>` : '' }
+                ${ isNormalMode ? `<div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>` : '' }
                 <li class="chapter">
-                    <a data-type="chapter-link" href="index.html"><span class="icon ion-ios-home"></span>Démarrage</a>
+                    <a data-type="chapter-link" href="index.html"><span class="icon ion-ios-home"></span>Getting started</a>
                     <ul class="links">
                         <li class="link">
                             <a href="overview.html" data-type="chapter-link">
-                                <span class="icon ion-ios-keypad"></span>Vue d&#x27;ensemble
+                                <span class="icon ion-ios-keypad"></span>Overview
                             </a>
                         </li>
                         <li class="link">
@@ -35,12 +35,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </li>
                                 <li class="link">
                                     <a href="dependencies.html" data-type="chapter-link">
-                                        <span class="icon ion-ios-list"></span>Dépendances
+                                        <span class="icon ion-ios-list"></span>Dependencies
                                     </a>
                                 </li>
                                 <li class="link">
                                     <a href="properties.html" data-type="chapter-link">
-                                        <span class="icon ion-ios-apps"></span>Propriétés
+                                        <span class="icon ion-ios-apps"></span>Properties
                                     </a>
                                 </li>
                     </ul>
@@ -61,7 +61,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
                                             'data-bs-target="#components-links-module-AppModule-fdff1e823cd365965c68c9b06d813d9b5d91e34ef03cc511c31d818b7e4d443728558094f00b7cdb0a31a8c07fcbf2b3168f33f6b2d509a8835a6bab91b1e02a"' : 'data-bs-target="#xs-components-links-module-AppModule-fdff1e823cd365965c68c9b06d813d9b5d91e34ef03cc511c31d818b7e4d443728558094f00b7cdb0a31a8c07fcbf2b3168f33f6b2d509a8835a6bab91b1e02a"' }>
                                             <span class="icon ion-md-cog"></span>
-                                            <span>Composants</span>
+                                            <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
                                         <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-fdff1e823cd365965c68c9b06d813d9b5d91e34ef03cc511c31d818b7e4d443728558094f00b7cdb0a31a8c07fcbf2b3168f33f6b2d509a8835a6bab91b1e02a"' :
@@ -125,12 +125,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ? 'data-bs-target="#miscellaneous-links"'
                             : 'data-bs-target="#xs-miscellaneous-links"' }>
                             <span class="icon ion-ios-cube"></span>
-                            <span>Divers</span>
+                            <span>Miscellaneous</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
                             <li class="link">
-                                <a href="miscellaneous/typealiases.html" data-type="entity-link">Alias de type</a>
+                                <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
                             </li>
                             <li class="link">
                                 <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
@@ -141,12 +141,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <a data-type="chapter-link" href="routes.html"><span class="icon ion-ios-git-branch"></span>Routes</a>
                         </li>
                     <li class="chapter">
-                        <a data-type="chapter-link" href="coverage.html"><span class="icon ion-ios-stats"></span>Couverture de documentation</a>
+                        <a data-type="chapter-link" href="coverage.html"><span class="icon ion-ios-stats"></span>Documentation coverage</a>
                     </li>
                     <li class="divider"></li>
                     <li class="copyright">
-                        Documentation générée avec <a href="https://compodoc.app/" target="_blank" rel="noopener noreferrer">
-                            <img data-src="images/compodoc-vectorise-inverted.png" class="img-responsive" data-type="compodoc-logo">
+                        Documentation generated using <a href="https://compodoc.app/" target="_blank" rel="noopener noreferrer">
+                            <img data-src="images/compodoc-vectorise.png" class="img-responsive" data-type="compodoc-logo">
                         </a>
                     </li>
             </ul>
